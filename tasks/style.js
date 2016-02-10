@@ -12,6 +12,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var gulpif = require('gulp-if');
 var autoprefixer = require('autoprefixer');
+var _ = require('lodash');
+var styledocco = require('gulp-styledocco');
 
 gulp.task('style', function() {
    config.style = config.style || {};
@@ -29,4 +31,16 @@ gulp.task('style', function() {
       .pipe(browser.stream({
          match: '**/*.css'
       }));
+});
+
+/**
+ * style-guide
+ */
+gulp.task('styledocco', function() {
+   var guideOptions = _.merge({
+      name: 'test',
+      'no-minify': true
+   }, config.styleguide);
+   return gulp.src(config.path.style.src)
+      .pipe(styledocco(guideOptions));
 });

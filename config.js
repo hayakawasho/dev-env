@@ -72,6 +72,12 @@ module.exports = {
          watch: [DEV + '/%type%/view/**/*.ejs'],
          dest: PUBLIC + '/%type%'
       },
+      // json: jsonによるhtml生成
+      json: {
+         config: [DEV + '/%type%' + ASSETS + '/data/template.json'], // 設定用JSONファイル
+         src: ['src/templates/json.ejs'], // テンプレート用EJSファイル
+         dest: PUBLIC + '/%type%'
+      },
       // スプライト: スプライト画像生成
       sprite: {
          src: DEV + '/%type%' + ASSETS + '/sprites/*',

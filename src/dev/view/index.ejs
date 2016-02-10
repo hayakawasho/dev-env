@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js ie8 lt-ie8" prefix="og: http://ogp.me/ns#"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ja" class="no-js" prefix="og: http://ogp.me/ns#">
+<!--<![endif]-->
+
+<head>
+  <% relative_path = './'; %>
+    <% path_img = 'assets/img/'; %>
+      <%- include('./parts/_head', {
+     meta:{title:'', description:'', keywords:'', image:'', url:'', type:'website'}
+  }) %>
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <!-- header -->
+    <%- include('../parts/_breadcrumbs',{
+         bread: [
+           {item:'', link:''},
+           {item:'添付文書検索', link:''},
+         ]
+    }) %>
+      <%- include('./parts/_l-header',{
+      global_navi_current: 2,
+      global_navi: [
+         {name:'yahoo!', url:'http://www.yahoo.co.jp/'},
+         {name:'google', url:'http://www.google.co.jp/'},
+         {name:'livedoor', url:'http://www.livedoor.com/'}
+      ],
+      header:['ホーム', '新着情報', '会社概要']
+   }) %>
+        <!-- /header -->
+
+        <!-- start contents -->
+        <!-- end contents -->
+
+        <!-- footer -->
+        <%- include('./parts/_l-footer') %>
+          <!-- /footer -->
+  </div>
+  <%- include('./parts/_script') %>
+</body>
+
+</html>
