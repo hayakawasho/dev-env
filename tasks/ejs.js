@@ -7,6 +7,7 @@ var config = require('./config');
 var ejs = require("gulp-ejs");
 var browser = require('browser-sync');
 var plumber = require('gulp-plumber');
+var notify = require('gulp-notify');
 var fs = require('fs');
 var rename = require('gulp-rename');
 

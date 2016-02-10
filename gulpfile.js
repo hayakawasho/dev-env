@@ -10,6 +10,7 @@ var config = require('./tasks/config');
  */
 gulp.task('watch', function() {
    gulp.watch(config.path.ejs.watch, ['ejs']);
+   gulp.watch(config.path.html.src, ['html']);
    gulp.watch(config.path.style.watch, ['style']);
    gulp.watch(config.path.images.watch, ['images']);
    gulp.watch(config.path.sprite.watch, ['sprite', 'style', 'copy']);

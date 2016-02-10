@@ -22,6 +22,7 @@ module.exports = {
          ignore: []
       }
    },
+   htmlhint: '.htmlhintrc',
    sprite: {
       // スプライトにする画像の拡張子
       extension: '.png',
@@ -60,6 +61,10 @@ module.exports = {
    },
    // パス設定
    path: {
+      // HTML: html
+      html: {
+          src: PUBLIC + '/%type%/**/*.html'
+      },
       // スタイル関連: SASS
       style: {
          src: [DEV + '/%type%' + ASSETS + '/sass/**/*.scss', '!' + DEV + '/%type%' + ASSETS + '/sass/**/_*.scss'],
@@ -89,10 +94,6 @@ module.exports = {
       // スクリプト: script
       js: {
          src: [DEV + '/%type%' + ASSETS + '/js/*.js', '!' + DEV + '/%type%' + ASSETS + '/js/_*.js'],
-         dest: PUBLIC + '/%type%' + ASSETS + '/js'
-      },
-      coffee: {
-         src: [DEV + '/%type%' + ASSETS + '/js/*.coffee', '!' + DEV + '/%type%' + ASSETS + '/js/_*.coffee'],
          dest: PUBLIC + '/%type%' + ASSETS + '/js'
       },
       // images
