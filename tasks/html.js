@@ -4,7 +4,6 @@
  */
 var gulp = require('gulp');
 var config = require('./config');
-var $ = require('./plugins');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
 var htmlhint = require('gulp-htmlhint');
