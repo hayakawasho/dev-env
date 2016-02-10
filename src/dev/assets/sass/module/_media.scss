@@ -1,0 +1,59 @@
+// ## 横一列に要素を並べる。
+// 列がinline-blockなので、with関係なくcenter,left,rightに配置可能
+// ```
+//     <div style="text-align:center;">
+//        <ul class="row_inline">
+//          <li>1</li>
+//          <li>2</li>
+//        <ul>
+//      </div>
+// ```
+//
+.row_inline {
+  display: inline-block;
+  @include clearfix;
+  &-item {
+    float: left;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+/*
+##row_table
+横幅いっぱい均等に一列に要素を並べる。
+隙間はpaddingまたはborderの幅で調整
+```
+  <ul class="row_table">
+    <li>1</li>
+    <li>2</li>
+  <ul>
+```
+*/
+.row_table {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  &-item {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+/*
+##cell
+要素を横並びにする際、要素の高さに対してtop,middle,bottomに配置させることが可能
+```
+```
+*/
+.cell {
+  display: table-cell;
+  vertical-align: top;
+  &-middle {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  &-bottom {
+    display: table-cell;
+    vertical-align: bottom;
+  }
+}

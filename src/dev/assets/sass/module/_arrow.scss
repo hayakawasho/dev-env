@@ -1,0 +1,107 @@
+@mixin arrow($positon:front, $direction:left, $link:txt, $size:8px, $arrCol:false) {
+  $colArrow: if( $arrCol != false, $arrCol, $colFnt);
+  $pos: if($positon == front, left, right);
+  $bdPosA: left;
+  $bdPosB: right;
+  $bdPosC: top;
+  @if $direction == left {
+    $bdPosA: top;
+    $bdPosB: bottom;
+    $bdPosC: right;
+  }
+  @else if $direction == right {
+    $bdPosA: top;
+    $bdPosB: bottom;
+    $bdPosC: left;
+  }
+  @else if $direction == top {
+    $bdPosA: left;
+    $bdPosB: right;
+    $bdPosC: bottom;
+  }
+  @else {
+    $bdPosA: left;
+    $bdPosB: right;
+    $bdPosC: top;
+  }
+  position: relative;
+  top: 0;
+  #{$pos}: 0;
+  padding-#{$pos}: $size*2+2;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    #{$pos}: 0;
+    border-#{$bdPosA}: $size solid transparent;
+    border-#{$bdPosB}: $size solid transparent;
+    border-#{$bdPosC}: $size*2-2 solid $colArrow;
+  }
+  @if $link == link {
+    &:hover {
+      &:before {
+        border-#{$bdPosC}-color: $colFtAH !important;
+      }
+    }
+  }
+}
+@mixin labelBaloon( $dir : left, $arrowColor : '', $arrowWidth : 5px, $padding : $arrowWidth, $position : absolute, $pos : $arrowWidth * 2 *-1, $radius : 2px, $background-color : $arrowColor, $color : #fff ) {
+  @if($padding) {
+    padding: $padding;
+  }
+  @if($dir == left or $dir == top) {
+    &:before {
+      width: 0;
+      height: 0;
+      content: "";
+      margin: auto;
+      position: $position;
+      border: solid $arrowWidth transparent;
+      z-index: 1;
+    }
+    @if($dir == left) {
+      &:before {
+        top: 0;
+        bottom: 0;
+        left: $pos;
+        border-right: solid $arrowWidth $arrowColor;
+      }
+    }
+    @else if($dir == top) {
+      &:before {
+        left: 0;
+        right: 0;
+        top: $pos;
+        border-bottom: solid $arrowWidth $arrowColor;
+      }
+    }
+  }
+  @else if($dir == right or $dir == bottom) {
+    &:after {
+      width: 0;
+      height: 0;
+      content: "";
+      margin: auto;
+      position: $position;
+      border: solid $arrowWidth transparent;
+      border-left: solid $arrowWidth $arrowColor;
+      z-index: 1;
+    }
+    @if($dir == right) {
+      &:after {
+        top: 0;
+        bottom: 0;
+        right: $pos;
+        border-left: solid $arrowWidth $arrowColor;
+      }
+    }
+    @else if($dir == bottom) {
+      &:after {
+        left: 0;
+        right: 0;
+        bottom: $pos;
+        border-top: solid $arrowWidth $arrowColor;
+      }
+    }
+  }
+}

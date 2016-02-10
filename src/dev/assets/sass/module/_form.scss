@@ -1,0 +1,186 @@
+/* ------ 入力部分パーツ ------ */
+/*
+#テキストエリアスタイル:iuputのカスタマイズ
+```
+<input type="text" name="" placeholder="" class="input_form" id="" />
+```
+*/
+.input_form {
+  //background-color: #EEEDED;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding: 0.5em 12px;
+  transition: all 0.2s;
+  color: #333;
+  border-radius: 0;
+  &::-webkit-input-placeholder {
+    color: #ccc;
+  }
+  &::-moz-placeholder {
+    color: #ccc;
+  }
+  &:-ms-input-placeholder {
+    color: #ccc;
+  }
+  &:focus {
+    //background-color: #fff;
+    border: 1px solid #eee9d7;
+  }
+  &.input_form-login {
+    //background-color: #f5f3f0;
+    margin-bottom: 8px;
+    width: 100%;
+    &:focus {
+      background-color: #fff;
+      border: 1px solid #eee9d7;
+    }
+  }
+  &.input_form-search {
+    @include rem(16,14);
+    //background-color: #fcf9f9;
+    border: 2px solid #bbc8d1;
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box;
+    padding: 0.5em 40px 0.5em 12px;
+    &:focus {
+      //background-color: #fff;
+      border: 2px solid #bbc8d1;
+    }
+  }
+  &.input_form-search_text {
+    @extend .input_form-search;
+    background: {
+      image: url(../../assets/img/search-icon.png);
+      repeat: no-repeat;
+      position: 15px center;
+    }
+    padding-left: 50px;
+  }
+}
+/*
+#select:ボックスのカスタマイズ
+```
+<label for="" class="input_select input_select-icon">
+  <select name="" id="">
+    <option value="">カテゴリを選択してください</option>
+  </select>
+</label>
+```
+*/
+.input_select {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  background-color: #fff;
+  vertical-align: bottom;
+  //border: 1px solid #ccc;
+  width: 100%;
+  select {
+    appearance: none;
+    border-radius: 0;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    width: -webkit-calc(100% + 5em);
+    /* fallback non calc support */
+    //padding: 6px 8px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  &.input_select-icon {
+    background: #fff url(../../assets/img/select-icon.png ) no-repeat center right;
+  }
+}
+@include min-query($sm) {
+  /*IEでセレクトボタンを隠すスタイル*/
+  .input_select-icon {
+    border-right: 2px solid #bbc8d1;
+    .input_form-search {
+      width: 120%;
+      overflow: hidden;
+    }
+  }
+}
+@include max-query($sm) {
+  .input_form {
+    &.input_form-login {
+      margin-bottom: 8px;
+      @include rem(14,14);      
+    }
+    &.input_form-search {
+      @include rem(14,14);
+      height: 40px;
+    }
+    &.input_form-search_text {
+      background: {
+        image: url(../../assets/img/search-icon-sp.png);
+        position: 5px center;
+        size: 16px auto;
+      }
+      padding-left: 30px;
+    }
+  }
+  .input_select.input_select-icon {
+    background: #fff url(../../assets/img/select-icon-sp.png ) no-repeat center right;
+    background-size: 40px auto;
+  }
+}
+// button　reset
+button.button {
+  border: none;
+  padding: 0;
+  background: transparent none;
+}
+.button {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  &:hover {
+    opacity: 0.7;
+  }
+  &.button-login-a {
+    @include rem(14,14);
+    background-color: #8e7523;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.75em 0;
+  }
+  &.button-login-b {
+    @include rem(14,14);
+    background-color: #fff;
+    border: 2px solid #c4b997;
+    color: #8e7523;
+    font-weight: bold;
+    padding: 0.75em 0;
+  }
+  &.button-search {
+    @include rem(20,14);
+    background-color: #8e989f;
+    background: linear-gradient(to bottom, #97a2a9 0%,#97a2a9 49%,#8e989f 50%,#8e989f);
+    color: #fefefe;
+    letter-spacing: 0.25em;
+    padding: 10px 0;
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box;
+  }
+}
+@include max-query($sm) {
+  .button {
+    &.button-login-a {
+      height: 40px;
+      border: 1px solid;
+    }
+    &.button-login-b {
+      @extend .button-login-a;
+    }
+    &.button-search {
+      @include rem(15,14);
+      height: 40px;
+    }
+  }
+}

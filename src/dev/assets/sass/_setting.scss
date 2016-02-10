@@ -1,0 +1,26 @@
+//antialiased,subpixel-antialiased,none
+$font-smoothing: antialiased;
+//auto,optimizeSpeed,optimizeLegibility,geometricPrecision
+$text-rendering: auto;
+$base-font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+$base-font-size: 1.6em;
+$base-font-color: #333;
+$base-background-color: #fff;
+$base-line-height: 1;
+$nav-list-style: none !default;
+$root-box-sizing: border-box;
+
+//
+//breakpoint
+//
+$sm: 600px; // Phones landscape
+
+//
+//フォーム用変数
+//
+$iconColor: #52779A;
+$icon_backgroundColor: #fff;
+$input_outerWidth: 18px;
+$input_innerWidth: 6px;
+$input_checkWidth: 12px;
+$input_checkHeight: 6px;

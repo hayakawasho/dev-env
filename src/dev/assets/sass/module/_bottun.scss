@@ -1,0 +1,262 @@
+.button{
+  display: inline-block;
+  text-align: center;
+  padding: 0.3em 0;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+$button_color = #1abc9c;
+//角丸グラデーションボタン
+.button-gradetion {
+  text-shadow: -1px -1px 2px #004da3;
+  background: -moz-linear-gradient(#2c9bf9, #037fde 35%, #004da3);
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0, #2c9bf9),color-stop(.35, #037fde),color-stop(1, #004da3));
+  border: 1px solid #004da3;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  &:hover{
+    text-shadow: -1px -1px 2px #004da3;
+    background: -moz-linear-gradient(#004da3, #037fde 75%, #2c9bf9);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0, #004da3),color-stop(.75, #037fde),color-stop(1, #2c9bf9));
+    border: 1px solid #004da3;
+  }
+  &:active{
+    text-shadow: -1px -1px 2px #004da3;
+    background: -moz-linear-gradient(#0879f8, #1a8cf7 45%, #69b0ff);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0, #0879f8),color-stop(.45, #1a8cf7),color-stop(1, #69b0ff));
+    border: 1px solid #004da3;
+  }
+}
+
+//マテリアルボタン
+//#1
+.button-material{
+	position: relative;
+	background-color: #1abc9c;
+	border-radius: 4px;
+	-webkit-transition: none;
+	transition: none;
+	box-shadow: 0 3px 0 #0e8c73;
+	//text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+  &:hover{
+    background-color: #31c8aa;
+  	box-shadow: 0 3px 0 #23a188;
+  }
+  &:active {
+  	top: 3px;
+  	box-shadow: none;
+  }
+}
+//#2
+.button-material{
+	background-color: #1abc9c;
+	border-radius: 4px;
+  box-shadow: 0 3px 0 rgba(136,136,136,1);
+  &:hover{
+    box-shadow: none;
+    transform: translate3d(0, 3px, 0);
+  }
+}
+
+/*チェックボックス→トグルボタンスタイル*/
+/* common style */
+.input_toggle{
+	input+label {
+		display: inline-block;
+		position: relative;
+		width: 100px;
+		height: 48px;
+		border-radius: 24px;
+		cursor: pointer;
+		-webkit-transition: all .2s;
+		transition: all .2s;
+		&::before {
+			display: block;
+			content: attr(data-off-label);
+			position: absolute;
+			top: 14px;
+			right: 7px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 18px;
+			-webkit-transition: all .2s;
+			transition: all .2s;
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: 44px;
+			height: 44px;
+			background-color: #fff;
+			border-radius: 50%;
+			-webkit-transition: all .2s;
+			transition: all .2s;
+		}
+	}
+}
+input:checked+label::before {
+	content: attr(data-on-label);
+	left: 7px;
+	right: auto;
+	color: #fff;
+}
+input:checked+label::after {
+	left: 54px;
+	background-color: #f7f7f7;
+}
+
+
+
+/* demo01 */
+#demo01+label {
+	background-color: #eee;
+}
+#demo01+label::before {
+	color: #aaa;
+}
+#demo01:checked+label {
+	background-color: #3498db;
+}
+#demo01:checked+label::before {
+	color: #fff;
+}
+
+
+
+/* demo02 */
+#demo02+label {
+	background-color: #e74c3c;
+}
+#demo02:checked+label {
+	background-color: #1abc9c;
+}
+
+
+
+////////button
+////微グラデのフラットぽいボタン
+////ずるいグラデーション
+@mixin gradient-top-lighten( $background-color:#666, $lighten:10%, $dir : vertical ) {
+  background-color: $background-color;
+  @include filter-gradient(lighten($background-color, $lighten), $background-color, $dir);
+  @include background-image(linear-gradient(lighten($background-color, $lighten) 0%, $background-color 100%));
+}
+
+// $width ボタン幅（$rowが1の時のみ有効）
+// $padding ボタン内の余白
+// $margin-right 右マージン（$rowが1の時のみ有効）
+// $height ボタン高さ
+// $color テキスト色
+// $background-color ボタン色
+// $radius ボタン角丸
+// $obj 内包されている直接の子要素（デフォルトではaタグ）
+// $row 横並びにしたいボタンの数（最大2）
+// $font-size フォントサイズ
+// (基本的にボタンの親要素に記述し直接の子要素がボタンになる。
+// $objで内包する要素を指定。デフォルトはaがボタンに成る想定)
+// $widthは数値で指定。
+//$rowは並列で並べる際に指定。最大で2
+@mixin button( $width : 100%, $padding: 1em, $margin-right:0, $height : 4px, $color : #fff, $background-color : #545454, $radius : 2px, $obj : a, $row : 1, $font-size : '' ) {
+  @if(50% >= $width) {
+    width: $width - $margin-right;
+    margin-right: $margin-right;
+    display: inline-block;
+    &:last-child {
+      width: $width;
+      margin-right: 0;
+    }
+  }
+  @else {
+    width: $width;
+    display: block;
+  }
+  #{$obj} {
+    width: 100%;
+    padding: $padding 0;
+    margin-bottom: $height;
+    position: relative;
+    display: block;
+    border-radius: $radius;
+    color: $color;
+    text-align: center;
+    text-decoration: none;
+    font-size: $font-size;
+    background-color: $background-color;
+    @include gradient-top-lighten($background-color, 5%);
+    @include box-shadow( $background-color/ 2 0 $height 0 );
+  }
+  * {
+    @include text-shadow(0 -1px 1px $basefontcolor );
+  }
+  &:hover {
+    #{$obj} {
+      cursor: pointer;
+      bottom: -$height + 2;
+      @include box-shadow( $background-color/ 2 0 $height + (-$height + 2) 0 );
+    }
+  }
+
+  //隣り合わせる場合
+  @if($row == 2) {
+    width: 49%;
+    margin-right: 1%;
+    display: inline-block;
+    &:nth-child(even) {
+      margin-right: 0;
+      display: inline-block;
+    }
+  }
+
+  //input type="submit"の場合、ボーダーをなくす
+  @if(#{$obj} == input) {
+    #{$obj} {
+      border: none;
+    }
+  }
+}
+//吹き出しの矢印
+@mixin balloon-arrow($aspect:top, $position: 50%, $color: #fff, $size: 10px) {
+  @if $color == #fff {
+    $color: $color - #333;
+  }
+  border: 1px solid $color;
+  &:after {
+    content: "";
+    position: absolute;
+    border: $size solid transparent;
+    @if $aspect == top {
+      border-bottom-color: $color;
+      border-top-width: 0;
+      margin-left: - $size;
+      top: - $size;
+      left: $position;
+    }
+    @else if $aspect == bottom {
+      border-top-color: $color;
+      border-bottom-width: 0;
+      margin-left: - $size;
+      bottom: - $size;
+      left: $position;
+    }
+    @else if $aspect == right {
+      border-left-color: $color;
+      border-right-width: 0;
+      margin-top: - $size;
+      right: - $size;
+      top: $position;
+      left: auto;
+    }
+    @else if $aspect == left {
+      border-right-color: $color;
+      border-left-width: 0;
+      margin-top: - $size;
+      left: - $size;
+      top: $position;
+    }
+  }
+}

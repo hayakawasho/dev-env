@@ -1,0 +1,83 @@
+//##グリッドレイアウト（デフォルト：デバイスサイズ、カラム数,クラス名）
+$grid-class: row;
+.#{$grid-class} {
+  @include clearfix();
+}
+%grid-item {
+  position: relative;
+  box-sizing: border-box;
+}
+@mixin grid($size, $col) {
+  $grid: 100% / $col;
+  @for $i from 1 through $col {
+    $width: ($grid * $i);
+    @if $size == default {
+      .col-#{$i} {
+        @extend %grid-item;
+        float: left;
+        width: $width;
+      }
+      .col-offset-#{$i} {
+        margin-left: $width;
+      }
+    }
+    @else {
+      .col-#{$size}-#{$i} {
+        @extend %grid-item;
+        float: left;
+        width: $width;
+      }
+      .col-#{$size}-offset-#{$i} {
+        margin-left: $width;
+      }
+    }
+  }
+  @for $i from 0 through $col {
+    $width: ($grid * $i);
+    @if $size == default {
+      .col-pull-#{$i} {
+        right: if($i > 0, $width, auto);
+      }
+      .col-push-#{$i} {
+        left: if($i > 0, $width, auto);
+      }
+    }
+    @else {
+      .col-#{$size}-pull-#{$i} {
+        right: if($i > 0, $width, auto);
+      }
+      .col-#{$size}-push-#{$i} {
+        left: if($i > 0, $width, auto);
+      }
+    }
+  }
+}
+@mixin use-grid($size:default, $col:12, $class:$grid-class ) {
+  .#{$class} {
+    //@include clearfix();
+    @if $size == default or $size == xs {
+      // width: always
+      @include grid($size,$col);
+    }
+    @else if $size == sm {
+      // width: tablets ~
+      @include min-query($sm) {
+        @include grid($size,$col);
+      }
+    }
+    @else if $size == md {
+      // width: tablets landscape & desktops ~
+      @include min-query($md) {
+        @include grid($size,$col);
+      }
+    }
+    @else if $size == lg {
+      // width: large desktops ~
+      @include min-query($lg) {
+        @include grid($size,$col);
+      }
+    }
+  }
+}
+@include use-grid();
+@include use-grid(sm);
