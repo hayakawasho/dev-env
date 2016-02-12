@@ -10,6 +10,8 @@ module.exports = {
    dist: PUBLIC + '/%type%',
    // gulpコマンドでデフォルトで監視するディレクトリ
    defaultPath: '',
+   // htmlhintの設定ファイル
+   htmlhint: '.htmlhintrc',
    // CSSの設定
    style: {
       // node-sass(https://github.com/sass/node-sass#options)
@@ -21,6 +23,11 @@ module.exports = {
          browsers: ['last 3 version', 'ie >= 9', 'Android 4.0'],
          ignore: []
       }
+   },
+   // スタイルガイド
+   styleguide: {
+      out: 'src/styleguide/%type%/',
+      name: 'test'
    },
    sprite: {
       // スプライトにする画像の拡張子
@@ -54,17 +61,11 @@ module.exports = {
          scroll: false
       }
    },
-   // スタイルガイド
-   styleguide: {
-      out: 'src/styleguide/%type%/'
-   },
    // パス設定
    path: {
-      // スタイル関連: SASS
-      style: {
-         src: [DEV + '/%type%' + ASSETS + '/sass/**/*.scss', '!' + DEV + '/%type%' + ASSETS + '/sass/**/_*.scss'],
-         watch: [DEV + '/%type%' + ASSETS + '/sass/**/*.scss'],
-         dest: PUBLIC + '/%type%' + ASSETS + '/css'
+      // HTML: html
+      html: {
+         src: PUBLIC + '/%type%/**/*.html'
       },
       // EJS: ejs
       ejs: {
@@ -78,6 +79,12 @@ module.exports = {
          src: ['src/templates/json.ejs'], // テンプレート用EJSファイル
          dest: PUBLIC + '/%type%'
       },
+      // スタイル関連: SASS
+      style: {
+         src: [DEV + '/%type%' + ASSETS + '/sass/**/*.scss', '!' + DEV + '/%type%' + ASSETS + '/sass/**/_*.scss'],
+         watch: [DEV + '/%type%' + ASSETS + '/sass/**/*.scss'],
+         dest: PUBLIC + '/%type%' + ASSETS + '/css'
+      },
       // スプライト: スプライト画像生成
       sprite: {
          src: DEV + '/%type%' + ASSETS + '/sprites/*',
@@ -86,19 +93,15 @@ module.exports = {
          imageDest: PUBLIC + '/%type%' + ASSETS + '/img',
          cssDest: DEV + '/%type%' + ASSETS + '/sass/sprites'
       },
-      // スクリプト: script
-      js: {
-         src: [DEV + '/%type%' + ASSETS + '/js/*.js', '!' + DEV + '/%type%' + ASSETS + '/js/_*.js'],
-         dest: PUBLIC + '/%type%' + ASSETS + '/js'
-      },
-      coffee: {
-         src: [DEV + '/%type%' + ASSETS + '/js/*.coffee', '!' + DEV + '/%type%' + ASSETS + '/js/_*.coffee'],
-         dest: PUBLIC + '/%type%' + ASSETS + '/js'
-      },
       // images
       images: {
          src: [DEV + '/%type%' + ASSETS + '/img/**/*.+(jpg|jpeg|png|gif|svg)'],
          dest: PUBLIC + '/%type%' + ASSETS + '/img'
+      },
+      // スクリプト: script
+      js: {
+         src: [DEV + '/%type%' + ASSETS + '/js/*.js', '!' + DEV + '/%type%' + ASSETS + '/js/_*.js'],
+         dest: PUBLIC + '/%type%' + ASSETS + '/js'
       },
       // 複製: copy
       copy: [{

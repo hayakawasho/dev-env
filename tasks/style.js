@@ -1,6 +1,7 @@
 /**
  * スタイルタスク
- * SCSSをコンパイルしてAutoprefixerをかける。プロダクションリリース時にはsourcemapを出力しない
+ * SCSSをコンパイルしてAutoprefixerをかける。
+ * プロダクションリリース時にはsourcemapを出力しない
  */
 var gulp = require('gulp');
 var config = require('./config');
@@ -12,7 +13,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var gulpif = require('gulp-if');
 var autoprefixer = require('autoprefixer');
-var _ = require('lodash');
 var styledocco = require('gulp-styledocco');
 
 gulp.task('style', function() {
@@ -32,15 +32,14 @@ gulp.task('style', function() {
          match: '**/*.css'
       }));
 });
-
 /**
  * style-guide
  */
 gulp.task('styledocco', function() {
-   var guideOptions = _.merge({
-      name: 'test',
-      'no-minify': true
-   }, config.styleguide);
-   return gulp.src(config.path.style.src)
-      .pipe(styledocco(guideOptions));
+   return gulp.src(config.path.style.watch)
+      .pipe(styledocco({
+         out: config.styleguide.out,
+         name: config.styleguide.name,
+         'no-minify': true
+      }));
 });
