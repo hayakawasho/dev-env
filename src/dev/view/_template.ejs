@@ -3,6 +3,18 @@
 <!--[if gt IE 8]><!-->
 <html lang="ja" class="no-js" prefix="og: http://ogp.me/ns#">
 <!--<![endif]-->
+<!--
+■オブジェクト：複数のデータを、データ名と値をセットにして格納するための入れ物
+{
+   データ名1:値1,
+   データ名２:値2
+}
+■配列：データを連続的に格納する入れ物
+var array = [
+   データ名1,
+   データ名２
+]
+-->
 
 <head>
   <% relative_path = './'; %>
@@ -22,10 +34,10 @@
            {item:'', link:''},
          ]
     }) %>
-    <%- include('../parts/_tag',{
+      <%- include('../parts/_tag',{
       tags: ['タグ1', 'タグ3', 'タグ2']
     }) %>
-      <%- include('./parts/_l-header',{
+        <%- include('./parts/_l-header',{
       global_navi_current: 2,
       global_navi: [
          {name:'yahoo!', url:'http://www.yahoo.co.jp/'},
@@ -34,14 +46,14 @@
       ],
       header:['ホーム', '新着情報', '会社概要']
    }) %>
-        <!-- /header -->
+          <!-- /header -->
 
-        <!-- start contents -->
-        <!-- end contents -->
+          <!-- start contents -->
+          <!-- end contents -->
 
-        <!-- footer -->
-        <%- include('./parts/_l-footer') %>
-          <!-- /footer -->
+          <!-- footer -->
+          <%- include('./parts/_l-footer') %>
+            <!-- /footer -->
   </div>
   <%- include('./parts/_script') %>
 </body>
