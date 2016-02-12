@@ -27,9 +27,8 @@ gulp.task('watch', function() {
  * ビルドタスク
  */
 gulp.task('build', ['clean'], function(callback) {
-   runSequence('sprite', ['ejs', 'style', 'script', 'images', 'copy'], callback);
+   runSequence('sprite', ['ejs', 'style', 'script', 'images', 'copy','styledocco'], callback);
 });
-
 /**
  * プロダクションリリースタスク
  */

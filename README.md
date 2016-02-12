@@ -13,8 +13,10 @@
 ### Dependence
 * [NodeJS](https://nodejs.org/)
 * [Gulp](http://gulpjs.com/)
+* [styledocco](https://www.npmjs.com/package/gulp-styledocco)
 ```
 npm i -g gulp
+npm install -g styledocco
 ```
 エラーが出たら `sudo` をつける
 

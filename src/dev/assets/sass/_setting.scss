@@ -1,14 +1,15 @@
 //antialiased,subpixel-antialiased,none
 $font-smoothing: antialiased;
 //auto,optimizeSpeed,optimizeLegibility,geometricPrecision
-$text-rendering: auto;
+$root-font-size: 62.5%;
+$root-box-sizing: border-box;
 $base-font-family: "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", YuGothic, Avenir, Verdana, Arial, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Roboto, Meiryo, sans-serif;
 $base-font-size: 1.6em;
 $base-font-color: #333;
 $base-background-color: #fff;
 $base-line-height: 1;
+$text-rendering: auto;
 $nav-list-style: none !default;
-$root-box-sizing: border-box;
 //
 //breakpoint
 //
