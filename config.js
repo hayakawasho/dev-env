@@ -2,8 +2,8 @@
  * タスク設定ファイル
  */
 var DEV = 'src/dev',
-   PUBLIC = 'src/public';
-var ASSETS = '/assets';
+   PUBLIC = 'src/public',
+   ASSETS = '/assets';
 
 module.exports = {
    // 出力先ディレクトリ
@@ -24,7 +24,7 @@ module.exports = {
          ignore: []
       }
    },
-   // スタイルガイド
+   // スタイルガイドの設定
    styleguide: {
       out: 'src/styleguide/%type%/',
       name: 'test'
@@ -63,11 +63,9 @@ module.exports = {
    },
    // パス設定
    path: {
-      // HTML: html
       html: {
          src: PUBLIC + '/%type%/**/*.html'
       },
-      // EJS: ejs
       ejs: {
          src: [DEV + '/%type%/view/**/*.ejs', '!' + DEV + '/%type%/view/**/_*.ejs'],
          watch: [DEV + '/%type%/view/**/*.ejs'],
@@ -79,7 +77,7 @@ module.exports = {
          src: ['src/templates/json.ejs'], // テンプレート用EJSファイル
          dest: PUBLIC + '/%type%'
       },
-      // スタイル関連: SASS
+      // スタイル関連
       style: {
          src: [DEV + '/%type%' + ASSETS + '/sass/**/*.scss', '!' + DEV + '/%type%' + ASSETS + '/sass/**/_*.scss'],
          watch: [DEV + '/%type%' + ASSETS + '/sass/**/*.scss'],
@@ -93,12 +91,11 @@ module.exports = {
          imageDest: PUBLIC + '/%type%' + ASSETS + '/img',
          cssDest: DEV + '/%type%' + ASSETS + '/sass/sprites'
       },
-      // images
       images: {
          src: [DEV + '/%type%' + ASSETS + '/img/**/*.+(jpg|jpeg|png|gif|svg)'],
          dest: PUBLIC + '/%type%' + ASSETS + '/img'
       },
-      // スクリプト: script
+      // Javascript
       js: {
          src: [DEV + '/%type%' + ASSETS + '/js/*.js', '!' + DEV + '/%type%' + ASSETS + '/js/_*.js'],
          dest: PUBLIC + '/%type%' + ASSETS + '/js'

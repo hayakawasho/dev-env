@@ -6,7 +6,7 @@
 ```
 */
 html {
-  font-size: 62.5%;
+  font-size: $root-font-size;
   width: 100%;
   min-height: 100%;
   box-sizing: $root-box-sizing;
@@ -18,7 +18,7 @@ body {
   -webkit-font-smoothing: $font-smoothing;
   font-smoothing: $font-smoothing;
   text-rendering: $text-rendering;
-  font-size: 16em;
+  font-size: $base-font-size;
   font-family: $base-font-family;
   color: $base-font-color;
   background-color: $base-background-color;

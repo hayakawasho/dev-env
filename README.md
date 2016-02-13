@@ -23,7 +23,7 @@ npm install -g styledocco
 ### 構成
 ```
 package.json - npmパッケージ設定ファイル
-config.js - テンプレートの設定ファイル。出力先やgulpの設定を変更できる
+config.js - gulpの設定ファイル
 webpack.config.js - WebPackの設定ファイル
 gulpfile.js - gulpファイル
 /tasks - gulpのタスクファイル
@@ -115,5 +115,9 @@ gulp production
 
 ### CSSルール
 - クラス名は意味がわからないほど省略しないこと
-- 原則、IDセレクタ使用の際はJavascriptのフックとすること
-- `js-`プレフィックスをつけたクラスには原則スタイルを当てないようにしてください。　※ただしJavascript挙動のために必要なスタイルは除く
+- Javascriptのフック以外でIDセレクタの使用は極力避けること
+- `js-`プレフィックスをつけたクラスにはスタイルを当てないこと
+※ただしJavascriptの挙動のために必要なスタイルは除く
+- できるだけ宣言を短くする
+◯ #column1 {　× .box .colum .right #column1
+ 
