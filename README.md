@@ -3,17 +3,19 @@
 ### Feature
 - テンプレートエンジン（EJS）
 - SASS
+- ES2015
 - スプライト画像の作成とSassファイルの出力
 - JS/CSSの圧縮と最適化
 - CSSのベンダープレフィックス付与自動化
 - LiveReload
+- HTMLHint
 - スタイルガイド生成
 - JS/CSSソースマップ
 
 ### Dependence
 * [NodeJS](https://nodejs.org/)
 * [Gulp](http://gulpjs.com/)
-* [styledocco](https://www.npmjs.com/package/gulp-styledocco)
+* [StyleDocco](https://www.npmjs.com/package/gulp-styledocco)
 ```
 npm i -g gulp
 npm install -g styledocco
