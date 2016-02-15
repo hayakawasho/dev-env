@@ -1,6 +1,5 @@
-## 開発環境構築
-
-### Feature
+# 開発環境構築
+## Feature
 - テンプレートエンジン（EJS）
 - SASS
 - ES2015
@@ -12,17 +11,20 @@
 - スタイルガイド生成
 - JS/CSSソースマップ
 
-### Dependence
-* [NodeJS](https://nodejs.org/)
-* [Gulp](http://gulpjs.com/)
-* [StyleDocco](https://www.npmjs.com/package/gulp-styledocco)
+## Dependence
+- [NodeJS](https://nodejs.org/)
+- [Gulp](http://gulpjs.com/)
+- [StyleDocco](https://www.npmjs.com/package/gulp-styledocco)
+
 ```
 npm i -g gulp
-npm install -g styledocco
+npm install -fg styledocco
 ```
-エラーが出たら `sudo` をつける
 
-### 構成
+ エラーが出たら `sudo` をつける
+
+## 構成
+
 ```
 package.json - npmパッケージ設定ファイル
 config.js - gulpの設定ファイル
@@ -32,27 +34,29 @@ gulpfile.js - gulpファイル
 /src
   ┣ /dev - 開発用フォルダ
   ┣ /public  - コンパイルされたデータフォルダ
-  ┣ /styleguide   - スタイルガイドフォルダ
+  ┣ /styleguide   - スタイルガイドフォルダ ※chromeのローカルでは見えない
   ┗ /templates - テンプレートファイルフォルダ
     ┗ sprite.ejs - スプライト画像用テンプレート
 ```
 
-### Get Started
-
-#### 準備
+## Get Started
+### 準備
 任意のディレクトリで以下のコマンドを実行します。
+
 ```
 npm run start
 ```
 
-#### 全体をビルド
+### 全体をビルド
 すべてのファイルをビルドします。開発を始める前に必ず一度はビルドしましょう。
+
 ```
 gulp build
 ```
 
-#### ファイル監視の実行 & サーバー起動
+### ファイル監視の実行 & サーバー起動
 以下のコマンドを実行するとブラウザで開発中のページが開きます。
+
 ```
 # ディレクトリを監視(src/dev)
 gulp
@@ -61,8 +65,9 @@ gulp
 gulp -sp
 ```
 
-#### スプライト画像生成
+### スプライト画像生成
 複数の画像をタイル上に１枚の画像にするスプライトを自動的に生成します。images/spites以下のディレクトリごとにスプライト画像とsassファイルを出力
+
 ```
 # スプライト生成
 gulp sprite
@@ -71,27 +76,33 @@ gulp sprite
 gulp sprite -sp
 ```
 
-##### 例
+#### 例
+
 ```
 images/sprites/icon/icon-twitter.png
 images/sprites/icon/icon-twitter.png
 ```
+
 ↓ `gulp sprite`
+
 ```
 images/sprites/icon.png
 sass/sprites/_icon.scss
 ```
+
 スプライト画像は`images/sprites/*.png`に、sassは`sass/sprites/_*.scss`に展開されるので、作られたsassを`@import`して使用します。
 
-##### Retinaディスプレイ用スプライト生成
+#### Retinaディスプレイ用スプライト生成
 ディレクトリ名の末尾を`-2x`にすることで自動的にsass上でサイズを1/2して表示されるようになります。
+
 ```
 images/sprites/icon-2x/icon-twitter.png
 images/sprites/icon-2x/icon-twitter.png
 ```
 
-#### サーバーのみ起動
+### サーバーのみ起動
 ビルドや監視が不要でサーバーのみ起動したい場合は以下のコマンドを使用します。
+
 ```
 # サーバー起動
 gulp server
@@ -100,26 +111,20 @@ gulp server
 gulp server -sp
 ```
 
-#### リリースファイル作成
+### リリースファイル作成
 ひと通りの開発が完了した時点で、リリース用のファイルを作成します。
+
 ```
 gulp production
 ```
 
-## コーディングルール
+# コーディングルール
+## CSS構成案
+## セレクタの指定
+原則、スタイルをあてる際は子孫セレクタ指定・ID指定は避け、クラス指定でコーディングしてください。 ※ただし、`.foo > li`のような子セレクタ指定、`:hover`などの類似クラス、`:before`などの擬似要素による指定は可能とします。
 
-### CSS構成案
-
-
-### セレクタの指定
-原則、スタイルをあてる際は子孫セレクタ指定・ID指定は避け、クラス指定でコーディングしてください。
-※ただし、`.foo > li`のような子セレクタ指定、`:hover`などの類似クラス、`:before`などの擬似要素による指定は可能とします。
-
-### CSSルール
+## CSSルール
 - クラス名は意味がわからないほど省略しないこと
 - Javascriptのフック以外でIDセレクタの使用は極力避けること
-- `js-`プレフィックスをつけたクラスにはスタイルを当てないこと
-※ただしJavascriptの挙動のために必要なスタイルは除く
-- できるだけ宣言を短くする
-◯ #column1 {　× .box .colum .right #column1
- 
+- `js-`プレフィックスをつけたクラスにはスタイルを当てないこと ※ただしJavascriptの挙動のために必要なスタイルは除く
+- できるだけ宣言を短くする ◯ #column1 {　× .box .colum .right #column1
