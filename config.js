@@ -10,7 +10,7 @@ module.exports = {
    dist: PUBLIC + '/%type%',
    // gulpコマンドでデフォルトで監視するディレクトリ
    defaultPath: '',
-   // htmlhintの設定ファイル
+   // htmlhintの設定
    htmlhint: '.htmlhintrc',
    // CSSの設定
    style: {
@@ -26,9 +26,10 @@ module.exports = {
    },
    // スタイルガイドの設定
    styleguide: {
-      out: 'src/styleguide/%type%/',
+      out: 'src/styleguide/%type%',
       name: 'test'
    },
+   // Sprite生成設定
    sprite: {
       // スプライトにする画像の拡張子
       extension: '.png',
@@ -73,8 +74,8 @@ module.exports = {
       },
       // json: jsonによるhtml生成
       json: {
-         config: [DEV + '/%type%' + ASSETS + '/data/template.json'], // 設定用JSONファイル
-         src: ['src/templates/json.ejs'], // テンプレート用EJSファイル
+         data: DEV + '/%type%' + ASSETS + '/data/data.json', // 設定用JSONファイル
+         src: 'src/templates/json.ejs', // テンプレート用EJSファイル
          dest: PUBLIC + '/%type%'
       },
       // スタイル関連
