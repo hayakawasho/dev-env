@@ -22,12 +22,17 @@ module.exports = {
       autoprefixer: {
          browsers: ['last 3 version', 'ie >= 9', 'Android 4.0'],
          ignore: []
-      }
+      },
+      // css-mqpacker(https://github.com/hail2u/node-css-mqpacker#options)
+      mqpacker: {}
    },
-   // スタイルガイドの設定
+   // スタイルガイドの設定 sc5-styleguide(https://github.com/SC5/sc5-styleguide)
    styleguide: {
       out: 'src/styleguide/%type%',
-      name: 'test'
+      name: 'test',
+      server: true,
+      port: 5001,
+      overviewPath: 'overview.md' //Overviewファイルの場所を指定
    },
    // Sprite生成設定
    sprite: {
