@@ -11,20 +11,22 @@ gulp.task('styleguide:generate', function() {
       .pipe(styleguide.generate({
          title: config.styleguide.name,
          server: config.styleguide.server,
-         rootPath: config.styleguide.out,
-         overviewPath: config.styleguide.overviewPath
+         port: config.styleguide.port,
+         rootPath: config.styleguide.out, //Server root path
+         overviewPath: config.styleguide.overviewPath,
+         parsers: {
+            //sass: 'scss',
+            scss: 'scss'
+         }
       }))
       .pipe(gulp.dest(config.styleguide.out));
 });
 
 gulp.task('styleguide:applystyles', function() {
    return gulp.src(config.path.style.src)
-      .pipe(sass({
-         errLogToConsole: config.styleguide.errLogToConsole
-      }))
+      .pipe(sass())
       .pipe(styleguide.applyStyles())
       .pipe(gulp.dest(config.styleguide.out));
 });
-
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
