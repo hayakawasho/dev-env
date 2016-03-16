@@ -1,0 +1,13 @@
+.container {
+  //各カラムにガター（余白）：両端につけないとカラムの幅を壊してしまう
+  //コンテナーにネガティブマージンをつけ、余白を埋める
+  $gutter: 5px;
+  .row {
+    margin-left: -$gutter;
+    margin-right: -$gutter;
+  }
+  [class*="col-"] {
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+}

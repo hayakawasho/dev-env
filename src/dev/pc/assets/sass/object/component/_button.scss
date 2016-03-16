@@ -1,0 +1,25 @@
+button.button {
+  appearance: none;
+  margin: 0;
+  font-size: inherit;
+}
+a.button {
+  text-decoration: none;
+  color: inherit;
+}
+// Base module/block
+.button {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  padding: 0.4em 1em;
+  border: 1px solid #000;
+  background-color: #eee;
+  cursor: pointer;
+}
+// Sub module/Modifier
+.button {
+  &__primary {
+    background-color: $button_color;
+  }
+}

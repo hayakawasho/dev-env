@@ -1,0 +1,6 @@
+//display:none
+@include max-query($sm) {
+  .hidden-sp {
+    display: none !important;
+  }
+}

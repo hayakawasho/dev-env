@@ -1,4 +1,4 @@
-//##グリッドレイアウト（デフォルト：デバイスサイズ、カラム数,クラス名）
+ // グリッドレイアウト（デフォルト：デバイスサイズ、カラム数,クラス名）
 $grid-class: row;
 .#{$grid-class} {
   @include clearfix();
@@ -54,7 +54,6 @@ $grid-class: row;
 }
 @mixin use-grid($size:default, $col:12, $class:$grid-class ) {
   .#{$class} {
-    //@include clearfix();
     @if $size == default or $size == xs {
       // width: always
       @include grid($size,$col);
@@ -79,3 +78,4 @@ $grid-class: row;
     }
   }
 }
+@include use-grid();

@@ -1,11 +1,3 @@
-// clearfix
-@mixin clearfix {
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-}
 //　breakpoint
 @mixin max-query($breakpoint) {
   @media only screen and (max-width: $breakpoint +(-1) ) {
@@ -22,7 +14,23 @@
     @content;
   }
 }
-// for IE8
+// clearfix
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+// テキストぶっ飛ばし
+@mixin text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: none;
+}
+// rem
 @mixin rem($size, $base:10) {
   font-size: $size + px;
   font-size: ($size / $base) + rem;
@@ -34,11 +42,6 @@
     font-family: $base-font-family;
     color: $color;
   }
-}
-@mixin hide-text {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
 }
 @mixin retina {
   @media (-webkit-min-device-pixel-ratio: 2),

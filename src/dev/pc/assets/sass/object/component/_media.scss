@@ -1,0 +1,32 @@
+@if $enable-flex {
+   // flex
+  .media {
+    display: flex;
+    //margin-bottom: $spacer;
+    &__body {
+      flex: 1;
+    }
+  }
+} @else {
+  // table
+  .media {
+    display: table;
+    &__image {
+      display: table-cell;
+      //padding-right: 20px;
+      > img {
+        display: block;
+      }
+    }
+    &__body {
+      display: table-cell;
+      vertical-align: top;
+      &--middle {
+        vertical-align: middle;
+      }
+      &--bottom {
+        vertical-align: bottom;
+      }
+    }
+  }
+}
