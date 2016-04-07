@@ -60,19 +60,19 @@ $grid-class: row;
     }
     @else if $size == sm {
       // width: tablets ~
-      @include min-query($sm) {
+      @include query-min($sm) {
         @include grid($size,$col);
       }
     }
     @else if $size == md {
       // width: tablets landscape & desktops ~
-      @include min-query($md) {
+      @include query-min($md) {
         @include grid($size,$col);
       }
     }
     @else if $size == lg {
       // width: large desktops ~
-      @include min-query($lg) {
+      @include query-min($lg) {
         @include grid($size,$col);
       }
     }

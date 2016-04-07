@@ -7,6 +7,7 @@ var config = require('./config');
 var autoprefixer = require('autoprefixer');
 var browser = require("browser-sync");
 var cssMqpacker = require('css-mqpacker');
+var csso = require('gulp-csso');
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
@@ -22,6 +23,7 @@ gulp.task('style', function() {
       }))
       .pipe(gulpif(!config.IS_PRODUCTION, sourcemaps.init()))
       .pipe(sass(config.style.sass))
+      .pipe(gulpif(!config.IS_PRODUCTION, csso()))
       .pipe(postcss([
          autoprefixer(config.style.autoprefixer),
          cssMqpacker(config.style.mqpacker)

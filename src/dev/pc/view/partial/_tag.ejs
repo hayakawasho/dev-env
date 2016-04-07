@@ -1,3 +1,4 @@
+<% media.forEach(function(data, key){ %>
 <% var taglist = {
    'タグ1':'/tags/1.html',
    'タグ2':'/tags/2.html',
@@ -8,3 +9,4 @@
      <a href="/contents/guide/know-how<%= taglist[tags] %>"><span><%= tags %></span></a>
      <% }); %>
   </p>
+<% }); %>

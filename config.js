@@ -9,7 +9,7 @@ module.exports = {
    // 出力先ディレクトリ
    dist: PUBLIC + '/%type%',
    // gulpコマンドでデフォルトで監視するディレクトリ
-   defaultPath: '',
+   defaultPath: 'pc',
    // htmlhintの設定
    htmlhint: '.htmlhintrc',
    // CSSの設定
@@ -32,7 +32,9 @@ module.exports = {
       name: 'test',
       server: true,
       port: 5001,
-      overviewPath: 'overview.md' //Overviewファイルの場所を指定
+      //rootPath: '',
+      overviewPath: 'Overview.md', //Overviewファイルの場所を指定
+      errLogToConsole: true
    },
    // Sprite生成設定
    sprite: {
@@ -93,7 +95,7 @@ module.exports = {
       sprite: {
          src: DEV + '/%type%' + ASSETS + '/sprites/*',
          watch: DEV + '/%type%' + ASSETS + '/sprites/**/*',
-         imagePath: '../img',
+         imagePath: '../../img',
          imageDest: PUBLIC + '/%type%' + ASSETS + '/img',
          cssDest: DEV + '/%type%' + ASSETS + '/sass/sprites'
       },

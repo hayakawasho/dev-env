@@ -19,7 +19,7 @@ var array = [
 <head>
   <% relative_path = './'; %>
     <% path_img = 'assets/img/'; %>
-      <%- include('./parts/_head', {
+      <%- include('./partial/_head', {
      meta:{title:'', description:'', keywords:'', image:'', url:'', type:'website'}
   }) %>
 </head>
@@ -28,16 +28,16 @@ var array = [
   <div id="wrapper">
 
     <!-- header -->
-    <%- include('../parts/_breadcrumbs',{
+    <%- include('../partial/_breadcrumbs',{
          bread: [
            {item:'', link:''},
            {item:'', link:''},
          ]
     }) %>
-      <%- include('../parts/_tag',{
+      <%- include('../partial/_tag',{
       tags: ['タグ1', 'タグ3', 'タグ2']
     }) %>
-        <%- include('./parts/_l-header',{
+        <%- include('./partial/_l-header',{
       global_navi_current: 2,
       global_navi: [
          {name:'yahoo!', url:'http://www.yahoo.co.jp/'},
@@ -52,10 +52,10 @@ var array = [
           <!-- end contents -->
 
           <!-- footer -->
-          <%- include('./parts/_l-footer') %>
+          <%- include('./partial/_l-footer') %>
             <!-- /footer -->
   </div>
-  <%- include('./parts/_script') %>
+  <%- include('./partial/_script') %>
 </body>
 
 </html>

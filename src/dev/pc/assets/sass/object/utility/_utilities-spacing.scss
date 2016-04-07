@@ -28,7 +28,7 @@
       }
     }
     @else {
-      @include max-query($size) {
+      @include query-max($size) {
         .u-#{$size}-mt#{$i * $nth} {
           margin-top: ($nth * $i)+px !important;
         }

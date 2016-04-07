@@ -1,4 +1,4 @@
-@include max-query($sm) {
+@include query-max($sm) {
   .base_inner-sp {
     margin-left: 12px;
     margin-right: 12px;
@@ -66,7 +66,7 @@
   margin-top: 30px;
   line-height: (24-20)/20+1;
 }
-@include max-query($sm) {
+@include query-max($sm) {
   .site-contents-annotation {
     @include rem(10,14);
     margin-top: 20px;
@@ -98,14 +98,14 @@
   background: url(../../img/pageTop.png) no-repeat;
   display: block;
 }
-@include max-query($sm) {
+@include query-max($sm) {
   .pageTop a {
     width: 30px;
     height: 30px;
     background-size: 30px;
   }
 }
-@include min-query($sm) {
+@include query-min($sm) {
   .pageTop.pageTop-small a {
     background: url(../../assets/img/pageTop-small.png) no-repeat right;
     margin: 1em 15px 0 0;

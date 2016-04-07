@@ -27,6 +27,7 @@ gulp.task('styleguide:applystyles', function() {
       .pipe(sass())
       .pipe(styleguide.applyStyles())
       .pipe(gulp.dest(config.styleguide.out));
+
 });
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
