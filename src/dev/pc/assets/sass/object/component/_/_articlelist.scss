@@ -1,0 +1,63 @@
+.floatRow {
+	@include inline-block;
+	li{
+		float: left;
+		&:first-child{
+			margin-left: 0;
+		}
+	}
+}
+.tableNav{
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	li{
+		display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+		a{
+			display: block;
+			text-decoration: none;
+		}
+	}
+}
+
+.button{
+	text-align: center;
+	a{
+		display: block;
+		text-decoration: none;
+	}
+}
+/*insta post*/
+.module__post{
+	background-color: #FFF;
+	border: 1px solid #ff0000;
+}
+.post_figure{
+	img{
+		width: 100%;
+	}
+}
+.post_caption{
+	.user{
+		padding: 20px 0;
+		border-bottom: 1px solid #B9C1C8;
+	}
+	.status{
+	  padding: 10px 0;
+		li{
+			margin-left: 10px;
+		}
+	}
+}
+@media only screen and (max-width: 768px) {
+	.module__post{
+		width: 195px;
+	}
+}
+@media only screen and (min-width: 769px) {
+	.module__post{
+		width: 235px;
+	}
+}

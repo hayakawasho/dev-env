@@ -8,17 +8,16 @@
 - CSSのベンダープレフィックス付与自動化
 - LiveReload
 - HTMLHint
+- ESLint
 - スタイルガイド生成
 - JS/CSSソースマップ
 
 ## Dependence
 - [NodeJS](https://nodejs.org/)
 - [Gulp](http://gulpjs.com/)
-- [StyleDocco](https://www.npmjs.com/package/gulp-styledocco)
 
 ```
 npm i -g gulp
-npm install -fg styledocco
 ```
 
  エラーが出たら `sudo` をつける
@@ -30,6 +29,7 @@ package.json - npmパッケージ設定ファイル
 config.js - gulpの設定ファイル
 webpack.config.js - WebPackの設定ファイル
 gulpfile.js - gulpファイル
+Overview.md - sc5-styleguideのOverviewファイル
 /tasks - gulpのタスクファイル
 /src
   ┣ /dev - 開発用フォルダ
@@ -111,20 +111,22 @@ gulp server
 gulp server -sp
 ```
 
+### スタイルガイドの実行
+
+#### options
+```
+styleguide -s <source_path> -o <output_path> [-c <config_file>] [--server] [--watch]
+```
+- -s, --source:コンパイルしたいCSSを指定
+- -o, --output:スタイルガイドのアウトプットパスを指定
+- -c, --config:JSONのconfigファイルを使う場合に指定
+- --server:ローカルサーバー起動
+- --port:サーバーのポート番号指定
+- --watch:ファイルを監視して変更があればスタイルガイドを更新する（サーバー起動必須）
+
 ### リリースファイル作成
 ひと通りの開発が完了した時点で、リリース用のファイルを作成します。
 
 ```
 gulp production
 ```
-
-# コーディングルール
-## CSS構成案
-## セレクタの指定
-原則、スタイルをあてる際は子孫セレクタ指定・ID指定は避け、クラス指定でコーディングしてください。 ※ただし、`.foo > li`のような子セレクタ指定、`:hover`などの類似クラス、`:before`などの擬似要素による指定は可能とします。
-
-## CSSルール
-- クラス名は意味がわからないほど省略しないこと
-- Javascriptのフック以外でIDセレクタの使用は極力避けること
-- `js-`プレフィックスをつけたクラスにはスタイルを当てないこと ※ただしJavascriptの挙動のために必要なスタイルは除く
-- できるだけ宣言を短くする ◯ #column1 {　× .box .colum .right #column1

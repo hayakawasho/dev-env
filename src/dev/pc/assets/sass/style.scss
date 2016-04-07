@@ -1,0 +1,89 @@
+@import "setting";
+@import "mixin";
+/////////////////////////////////////////////////////
+//
+//	Foundation
+//
+/////////////////////////////////////////////////////
+@import "foundation/sanitize";
+@import "foundation/base";
+/////////////////////////////////////////////////////
+//
+//	Utility
+//
+/////////////////////////////////////////////////////
+@import "object/utility/utilities";
+/////////////////////////////////////////////////////
+//
+//	Layout
+//
+/////////////////////////////////////////////////////
+//@import "layout/header";
+//@import "layout/footer";
+/////////////////////////////////////////////////////
+//
+//	Component
+//
+/////////////////////////////////////////////////////
+@import "object/component/grid";
+/////////////////////////////////////////////////////
+//
+//	Project
+//
+/////////////////////////////////////////////////////
+//@import "object/project/top";
+
+
+
+// Section with modifiers
+//
+// $color-red - Red test color
+// $color-green - Green test color
+// $color-blue - Blue test color
+// .other-modifier - Other modifier
+//
+// Markup:
+// <div style="background: {$modifiers};"></div>
+//
+// Styleguide 2.0
+// Section without markup
+//
+// Styleguide 3.0
+/*
+
+grid
+
+Markup:
+<div class="row show-grid">
+   <div class="col-6">col-6</div>
+   <div class="col-6">col-6</div>
+</div>
+<div class="row show-grid">
+      <div class="col-8">col-8</div>
+      <div class="col-4">col-4</div>
+</div>
+<div class="row show-grid">
+   <div class="col-4">col-4</div>
+   <div class="col-4">col-4</div>
+   <div class="col-4">col-4</div>
+</div>
+<div class="row show-grid">
+   <div class="col-2">col-2</div>
+   <div class="col-2">col-2</div>
+   <div class="col-2">col-2</div>
+   <div class="col-2">col-2</div>
+   <div class="col-2">col-2</div>
+   <div class="col-2">col-2</div>
+</div>
+
+Styleguide 2.0
+
+*/
+.show-grid {
+  padding: 0.5em 0;
+}
+.show-grid div {
+  background-color: #dddddd;
+  border: 1px solid #808080;
+  padding: 0.5em;
+}
