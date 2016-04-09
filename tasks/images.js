@@ -1,12 +1,13 @@
+'use strict';
 /**
  * imagesタスク
  *
  */
-var gulp = require('gulp');
-var config = require('./config');
-var imagemin = require('gulp-imagemin');
+let gulp = require('gulp');
+let config = require('./config');
+let imagemin = require('gulp-imagemin');
 
-gulp.task('images', function() {
+gulp.task('images', () => {
    return gulp.src(config.path.images.src)
       .pipe(imagemin({
          optimizationLevel: 7, // 試行回数

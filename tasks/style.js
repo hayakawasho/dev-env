@@ -1,3 +1,4 @@
+'use strict';
 /**
  * スタイルタスク
  * SCSSをコンパイルしてAutoprefixerをかける。プロダクションリリース時にはsourcemapを出力しない
@@ -15,7 +16,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var gulpif = require('gulp-if');
 
-gulp.task('style', function() {
+gulp.task('style', () => {
    config.style = config.style || {};
    return gulp.src(config.path.style.src)
       .pipe(plumber({

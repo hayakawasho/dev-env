@@ -1,14 +1,16 @@
+'use strict';
 /**
  * HTML Lintタスク
  * HTMLが変更されたときにLintを通す
  */
-var gulp = require('gulp');
-var config = require('./config');
-var plumber = require('gulp-plumber');
-var notify = require('gulp-notify');
-var htmlhint = require('gulp-htmlhint');
+let gulp = require('gulp');
+let config = require('./config');
+let plumber = require('gulp-plumber');
+let notify = require('gulp-notify');
+let htmlhint = require('gulp-htmlhint');
 
-gulp.task('html', function() {
+
+gulp.task('html', () => {
    return gulp.src(config.path.html.src)
       .pipe(plumber({
          errorHandler: notify.onError('<%= error.message %>')
