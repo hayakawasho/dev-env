@@ -29,6 +29,14 @@ let webpackConfig = {
             test: /\.jsx?$/,
             exclude: /node_modules/,
             loaders: ['babel?presets[]=es2015']
+         }, {
+            loader: 'babel',
+            exclude: /node_modules/,
+            test: /\.js[x]?$/,
+            query: {
+               cacheDirectory: true,
+               presets: ['react', 'es2015']
+            }
          }
       ]
    },
