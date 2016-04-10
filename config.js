@@ -1,8 +1,9 @@
+'use strict';
 /**
  * タスク設定ファイル
  */
-var DEV = 'src/dev',
-   PUBLIC = 'src/public',
+const DEV = 'app/dev',
+   PUBLIC = 'app/public',
    ASSETS = '/assets';
 
 module.exports = {
@@ -28,7 +29,7 @@ module.exports = {
    },
    // スタイルガイドの設定 sc5-styleguide(https://github.com/SC5/sc5-styleguide)
    styleguide: {
-      out: 'src/styleguide/%type%',
+      out: 'app/styleguide/%type%',
       name: 'test',
       server: true,
       port: 5001,
@@ -47,7 +48,7 @@ module.exports = {
       // 細かいオプション
       options: {
          // 生成するcssのテンプレート
-         cssTemplate: 'src/templates/sprite.ejs',
+         cssTemplate: 'app/templates/sprite.ejs',
          // スプライト配置アルゴリズム
          algorithm: 'binary-tree',
          // スプライト画像の間隔
@@ -82,7 +83,7 @@ module.exports = {
       // json: jsonによるhtml生成
       json: {
          data: DEV + '/%type%' + ASSETS + '/data/data.json', // 設定用JSONファイル
-         src: 'src/templates/json.ejs', // テンプレート用EJSファイル
+         src: 'app/templates/json.ejs', // テンプレート用EJSファイル
          dest: PUBLIC + '/%type%'
       },
       // スタイル関連
