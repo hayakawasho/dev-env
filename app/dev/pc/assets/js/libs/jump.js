@@ -1,4 +1,4 @@
-import easeInOutQuad from './easing'
+import easeInOutQuad from './_easing'
 export default class Jump {
   jump(target, options = {}) {
     this.start = window.pageYOffset
