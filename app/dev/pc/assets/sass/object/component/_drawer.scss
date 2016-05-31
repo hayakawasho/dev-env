@@ -1,0 +1,65 @@
+/////////////////////////////////////////////////////
+// drawer-menu
+/////////////////////////////////////////////////////
+@media (max-width: 767px) {
+  .drawer-menu {
+    //base
+    visibility: hidden;
+    background: #fff;
+    padding: 10px;
+    //position
+    position: fixed;
+    top: 0; //drawerのtop位置
+    bottom: 20px; //drawerのbottom位置
+    right: -80%;
+    width: 80%;
+    z-index: 1032; ////navbarの数値+2
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    overflow-y: auto;
+    //effect
+    transform-style: preserve-3d;
+    transition-delay: 0;
+    transition-duration: 0.3s;
+    transition-timing-function:ease;
+  }
+  .drawer-menu.is-active {
+    //transform: translateX(0);
+    right: 0;
+    visibility: visible;
+  }
+}
+/////////////////////////////////////////////////////
+// drawer-mask
+/////////////////////////////////////////////////////
+@media (max-width: 767px) {
+  .drawer-mask {
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.1;
+    visibility: hidden;
+    transition: visibility 0 linear 0.4s,opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+    z-index: 1031;
+    //effect
+    transition-delay: 0.1s;
+    transition-duration: 0.2s;
+  }
+  .drawer-mask.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0;
+  }
+}
+/////////////////////////////////////////////////////
+// drawer-mask-disable-scroll
+/////////////////////////////////////////////////////
+@media (max-width: 767px) {
+  .drawer-mask-disable-scroll {
+    overflow: hidden;
+  }
+}
