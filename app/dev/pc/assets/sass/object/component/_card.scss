@@ -1,0 +1,39 @@
+.card {
+  //position: relative;
+  display: block;
+  //margin-bottom: 0.75rem;
+  //background-color: #fff;
+  //border: 1px solid #e5e5e5;
+  //border-radius: 0.25rem;
+  &-title {
+    //margin-bottom: $card-spacer-y;
+  }
+  &-subtitle {
+    //margin-top: -($card-spacer-y / 2);
+    //margin-bottom: 0;
+  }
+  &-header {
+    //padding: $card-spacer-y $card-spacer-x;
+    //background-color: $card-cap-bg;
+    //border-bottom: $card-border-width solid $card-border-color;
+    &:first-child {
+      //@include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    }
+  }
+  &-footer {
+    //padding: $card-spacer-y $card-spacer-x;
+    //background-color: $card-cap-bg;
+    //border-top: $card-border-width solid $card-border-color;
+    &:last-child {
+      //@include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+    }
+  }
+  &-block {
+    //padding: $card-spacer-x;
+  }
+  &-text {
+    &:last-child {
+      //margin-bottom: 0;
+    }
+  }
+}
