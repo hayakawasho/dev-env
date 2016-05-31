@@ -13,8 +13,8 @@
 - JS/CSSソースマップ
 
 ## Dependence
-- [NodeJS](https://nodejs.org/)
-- [Gulp](http://gulpjs.com/)
+- [NodeJS](https://nodejs.org/) 4.0以上
+- [Gulp](http://gulpjs.com/) 3.9以上
 
 ```
 npm i -g gulp

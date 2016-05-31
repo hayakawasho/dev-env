@@ -1,0 +1,9 @@
+/* アイコン共通CSS */
+.icon{
+  display: inline-block;
+  vertical-align: top;
+  width: $icon-base-size;
+  height: $icon-base-size;
+  position: relative;
+  border: 1px solid;
+}

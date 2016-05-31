@@ -1,12 +1,13 @@
+'use strict';
 /**
  * style-guideタスク
  */
-var gulp = require('gulp');
-var config = require('./config');
-var styleguide = require('sc5-styleguide');
-var sass = require('gulp-sass');
+let gulp = require('gulp');
+let config = require('./config');
+let styleguide = require('sc5-styleguide');
+let sass = require('gulp-sass');
 
-gulp.task('styleguide:generate', function() {
+gulp.task('styleguide:generate', () => {
    return gulp.src(config.path.style.src)
       .pipe(styleguide.generate({
          title: config.styleguide.name,
@@ -22,7 +23,7 @@ gulp.task('styleguide:generate', function() {
       .pipe(gulp.dest(config.styleguide.out));
 });
 
-gulp.task('styleguide:applystyles', function() {
+gulp.task('styleguide:applystyles', () => {
    return gulp.src(config.path.style.src)
       .pipe(sass())
       .pipe(styleguide.applyStyles())

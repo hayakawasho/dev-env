@@ -19,7 +19,7 @@ a.button {
 }
 // Sub module/Modifier
 .button {
-  &__primary {
+  &--primary {
     background-color: $button_color;
   }
 }

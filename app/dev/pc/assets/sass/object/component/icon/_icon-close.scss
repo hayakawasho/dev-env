@@ -1,0 +1,21 @@
+/*バツ*/
+.icon--close {
+  &:after,
+  &:before {
+    display: block;
+    content: '';
+    width: $icon-close-weight;
+    height: $icon-close-size;
+    background-color: $icon-color;
+    border-radius: 10px;
+    position: absolute;
+    top: -($icon-close-size - $icon-base-size)/2;
+    left: 50%;
+  }
+  &:before {
+    transform: translateX(-50%) rotate(-45deg);
+  }
+  &:after {
+    transform: translateX(-50%) rotate(45deg);
+  }
+}

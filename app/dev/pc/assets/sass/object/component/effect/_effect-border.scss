@@ -1,0 +1,150 @@
+////////////////////////////////////////
+// border Transitions
+////////////////////////////////////////
+.effect-border {
+  transform: translateZ(0);
+  //box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  //-moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background-color: #2098d1;
+    height: 4px;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+  }
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    right: 0;
+  }
+}
+////////////////////////////////////////
+// Underline
+////////////////////////////////////////
+// From left
+.underline-from-left {
+  &:before {
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    transition-property: right;
+  }
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    right: 0;
+  }
+}
+// From right
+.underline-from-right {
+  &:before {
+    left: 100%;
+    right: 0;
+    bottom: 0;
+    transition-property: left;
+  }
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    left: 0;
+  }
+}
+// From Center
+.underline-from-center {
+  &:before {
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    transition-property: left, right;
+  }
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    left: 0;
+    right: 0;
+  }
+}
+////////////////////////////////////////
+// overline
+////////////////////////////////////////
+// From left
+.overline-from-left {
+  &:before {
+    left: 0;
+    right: 100%;
+    top: 0;
+    transition-property: right;
+  }
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    right: 0;
+  }
+}
+// From right
+.overline-from-right {
+  &:before {
+    left: 100%;
+    right: 0;
+    top: 0;
+    transition-property: left;
+  }
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    left: 0;
+  }
+}
+// From Center
+.overline-from-center {
+  &:before {
+    left: 50%;
+    right: 50%;
+    top: 0;
+    transition-property: left, right;
+  }
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    left: 0;
+    right: 0;
+  }
+}
+////////////////////////////////////////
+// reveal
+////////////////////////////////////////
+//underline
+.underline-reveal {
+  &:before {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateY(4px);
+    transition-property: transform;
+  }
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    transform: translateY(0);
+  }
+}
+// overline
+.overline-reveal {
+  &:before {
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: translateY(-4px);
+    transition-property: transform;
+  }
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    transform: translateY(0);
+  }
+}

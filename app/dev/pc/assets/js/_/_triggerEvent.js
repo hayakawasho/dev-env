@@ -1,3 +1,9 @@
+try { //IE9+, Other Browsers
+    window.addEventListener('resize', changeWin, false);
+} catch (e) { //for IE8-
+    window.attachEvent('onresize', changeWin);
+}
+
 function itemTriggerEvent(element, event) {
    if (document.createEvent) {
       // IE以外

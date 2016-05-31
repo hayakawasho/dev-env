@@ -1,3 +1,4 @@
+'use strict';
 /**
  * EJSタスク
  * EJSで作られたファイルを指定ディレクトリにコンパイルして出力する
@@ -9,7 +10,7 @@ var browser = require('browser-sync');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
 
-gulp.task('ejs', function() {
+gulp.task('ejs', () => {
    return gulp.src(config.path.ejs.src)
       .pipe(plumber({
          errorHandler: notify.onError('<%= error.message %>')
