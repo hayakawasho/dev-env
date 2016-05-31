@@ -1,0 +1,243 @@
+$size:8px;
+@mixin triangle($size: 8px, $color: #000, $side: top, $position: 50%, $direction: regular) {
+
+}
+.sankaku{
+   border: solid transparent;
+   display: inline-block;
+   position: absolute;
+   border-width: $size;
+}
+@mixin module-triangle($size: 8px, $color: #000, $side: top, $position: 50%, $direction: regular) {
+  position: relative;
+  background-color: $color;
+  &::before {
+    content: "";
+    border: solid transparent;
+    display: inline-block;
+    position: absolute;
+    border-width: $size;
+    @if $direction == reverse {
+       @if $side == top{
+        border-bottom-color: $color;
+        margin-left: -$size;
+        left: $position;
+        bottom: -($size * 2);
+      }
+      @elseif $side == right {
+        border-left-color: $color;
+        margin-top: -$size;
+        left: -($size * 2);
+        top: $position;
+      }
+      @elseif $side == bottom {
+        border-top-color: $color;
+        margin-left: -$size;
+        left: $position;
+        top: -($size * 2);
+      }
+      @else {
+        border-right-color: $color;
+        margin-top: -$size;
+        right: -($size * 2);
+        top: $position;
+      }
+    }
+    @else {
+       @if $side == top{
+        border-bottom-color: $color;
+        margin-left: -$size;
+        left: $position;
+        top: -($size * 2);
+      }
+      @elseif $side == right {
+        border-left-color: $color;
+        margin-top: -$size;
+        right: -($size * 2);
+        top: $position;
+      }
+      @elseif $side == bottom {
+        border-top-color: $color;
+        margin-left: -$size;
+        left: $position;
+        bottom: -($size * 2);
+      }
+      @else {
+        border-right-color: $color;
+        margin-top: -$size;
+        left: -($size * 2);
+        top: $position;
+      }
+    }
+  }
+}
+@mixin module-triangle2($size: 8px, $color: #000, $side: top, $position: 50%, $direction: regular) {
+  border: solid transparent;
+  display: inline-block;
+  position: absolute;
+  border-width: $size;
+  @if $direction == reverse {
+     @if $side == top{
+      border-bottom-color: $color;
+      margin-left: -$size;
+      left: $position;
+      bottom: -($size * 2);
+    }
+    @elseif $side == right {
+      border-left-color: $color;
+      margin-top: -$size;
+      left: -($size * 2);
+      top: $position;
+    }
+    @elseif $side == bottom {
+      border-top-color: $color;
+      margin-left: -$size;
+      left: $position;
+      top: -($size * 2);
+    }
+    @else {
+      border-right-color: $color;
+      margin-top: -$size;
+      right: -($size * 2);
+      top: $position;
+    }
+  }
+  @else {
+     @if $side == top{
+      border-bottom-color: $color;
+      margin-left: -$size;
+      left: $position;
+      top: -($size * 2);
+    }
+    @elseif $side == right {
+      border-left-color: $color;
+      margin-top: -$size;
+      right: -($size * 2);
+      top: $position;
+    }
+    @elseif $side == bottom {
+      border-top-color: $color;
+      margin-left: -$size;
+      left: $position;
+      bottom: -($size * 2);
+    }
+    @else {
+      border-right-color: $color;
+      margin-top: -$size;
+      left: -($size * 2);
+      top: $position;
+    }
+  }
+}
+.sample {
+  @include module-triangle(8px, #fff, bottom,20%,reverse);
+  border: 1px solid #000;
+  border-radius: 5%;
+  width: 100px;
+  padding: 1em;
+  color: #000;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 100px;
+  &:before {
+    border-top-color: #000;
+  }
+  &:after {
+    border-top-color: #fff;
+    content: "";
+    border: solid transparent;
+    display: inline-block;
+    position: absolute;
+    border-width: 8px;
+    border-top-color: #fff;
+    margin-left: -8px;
+    left: 50%;
+    bottom: -16px;
+  }
+}
+@mixin arrow-box( $position: top, $size: 30px, $color: #88b7d5, $bd-with: 4px, $bd-color: #c2e1f5 ) {
+  $bd-with-before: round(($bd-with * 1.41421356) + $size);
+  $pos1: "";
+  $pos2: "";
+  @if $position == "right" {
+    $pos1: "left";
+    $pos2: "top";
+  }
+  @else if $position == "bottom" {
+    $pos1: "top";
+    $pos2: "left";
+  }
+  @else if $position == "left" {
+    $pos1: "right";
+    $pos2: "top";
+  }
+  @else {
+    $pos1: "bottom";
+    $pos2: "left";
+  }
+  position: relative;
+  background: $color;
+  border: $bd-with solid $bd-color;
+  &:after,
+  &:before {
+    #{$pos1}: 100%;
+    #{$pos2}: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  &:after {
+    border-color: rgba($color, 0);
+    border-#{$pos1}-color: $color;
+    border-width: $size;
+    margin-#{$pos2}: $size * -1;
+  }
+  &:before {
+    border-color: rgba($bd-color, 0);
+    border-#{$pos1}-color: $bd-color;
+    border-width: $bd-with-before;
+    margin-#{$pos2}: $bd-with-before * -1;
+  }
+}
+@mixin bordered-speech-bubble($background-color: #9cf, $border-color: #369) {
+  border: 4px solid $border-color;
+  position: relative;
+  background-color: $background-color;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  &:before {
+    border-top-width: 16px;
+    border-right-width: 16px;
+    border-bottom-width: 0;
+    border-left-width: 16px;
+    border-color: $border-color transparent;
+    border-style: solid;
+    display: block;
+    position: absolute;
+    bottom: -16px;
+    left: 16px;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+  &:after {
+    border-top-width: 16px;
+    border-right-width: 16px;
+    border-bottom-width: 0;
+    border-left-width: 16px;
+    border-color: $background-color transparent;
+    border-style: solid;
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 16px;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+}
