@@ -1,25 +1,18 @@
 /////////////////////////////////////////////////////
-//
 //	Option
-//
 /////////////////////////////////////////////////////
 $enable-flex: false !default;
 /////////////////////////////////////////////////////
-//
 //	Font family
-//
 /////////////////////////////////////////////////////
 // serif体
-$font-family-serif: "游明朝体", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "ヒラギノ明朝 ProN W3", "HG明朝E", "MS PMincho", "ＭＳ Ｐ明朝", serif;
-// sans-serif体
+$font-family-serif: "游明朝体", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "ヒラギノ明朝 ProN W3", "HG明朝E", "MS PMincho", "ＭＳ Ｐ明朝", serif; // sans-serif体
 $font-family-ja: "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", Meiryo, メイリオ, Roboto, "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
 $font-family-en: Helvetica, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", sans-serif;
 /////////////////////////////////////////////////////
-//
 //	Base
-//
 /////////////////////////////////////////////////////
-$root-font-size: 62.5%;  // cf) 62.5% → 1rem = 10px　/ 87.5% → 1rem = 14px
+$root-font-size: 62.5%; // cf) 62.5% → 1rem = 10px　/ 87.5% → 1rem = 14px
 $root-box-sizing: border-box;
 $base-font-size: 1.6em;
 $base-font-color: #333;
@@ -31,22 +24,39 @@ $text-rendering: auto;
 $font-smoothing: antialiased;
 $nav-list-style: none !default;
 /////////////////////////////////////////////////////
-//
 // Breakpoint
-//
 /////////////////////////////////////////////////////
 $sm: 768px; // Phones
 $md: 960px; // Tablets
 $lg: 1200px; // Desktops
 /////////////////////////////////////////////////////
-//
 //	Colors
-//
 /////////////////////////////////////////////////////
 $color-main: #ff7a79;
 $color-sub: #80c5b3;
-/////////////////////////////////////////////////////
-//
+ /////////////////////////////////////////////////////
 //	Project
-//
 /////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+//	Component
+/////////////////////////////////////////////////////
+//////////////
+// icon
+//////////////
+$icon-base-size: 4rem;
+$icon-color: blue;
+//icon-arrow
+$icon-arrow-length:1.65rem;
+$icon-arrow-weight: .3rem;
+$icon-arrow-gutter: .4rem;
+// icon-close
+$icon-close-size: 2rem;
+$icon-close-weight: 0.2rem;
+// icon-others
+$icon-others-size: 0.4rem;
+$icon-others-gutter: 0.5rem; // icon-search
+$icon-search-size: 1.6rem; //$icon-search-handle: 20px;
+$icon-search-weight: 0.3rem; // icon-home
+$icon-home-size: 2rem;
+$icon-home-window: 1rem;
+$icon-home-border: 2rem;
