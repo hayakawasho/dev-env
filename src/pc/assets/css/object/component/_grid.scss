@@ -1,0 +1,89 @@
+/*
+Compornent
+
+コンポーネント
+
+Styleguide 2.0.0
+*/
+@mixin grid($prefix:null, $col-modifier:false) {
+  $col-num: 12;
+  @for $i from 1 through $col-num {
+     @if $prefix == null{
+      .col--#{$i} {
+        width: percentage($i / $col-num);
+      }
+    }
+    @else {
+      .col--#{$prefix}-#{$i} {
+        width: percentage($i / $col-num);
+      }
+    }
+  }
+  @if $col-modifier != false {
+     @for $i from 0 through $col-num{
+      @if $prefix == null {
+        .col--offset-#{$i} {
+          margin-left: percentage($i / $col-num);
+        }
+        .col--pull-#{$i} {
+          right: if($i > 0, percentage($i / $col-num), auto);
+        }
+        .col--push-#{$i} {
+          left: if($i > 0, percentage($i / $col-num), auto);
+        }
+      }
+      @else {
+        .col--#{$prefix}-offset-#{$i} {
+          margin-left: percentage($i / $col-num);
+        }
+        .col--#{$prefix}-pull-#{$i} {
+          right: if($i > 0, percentage($i / $col-num), auto);
+        }
+        .col--#{$prefix}-push-#{$i} {
+          left: if($i > 0, percentage($i / $col-num), auto);
+        }
+      }
+    }
+  }
+}
+/*
+Grid
+
+グリッド
+
+.col            - Base styles
+.col--1      - column-1
+.col--2      - column-2
+.col--3      - column-3
+.col--4      - column-4
+.col--5      - column-5
+.col--6      - column-6
+.col--7      - column-7
+.col--8      - column-8
+.col--9      - column-9
+.col--10      - column-10
+.col--11      - column-11
+.col--12      - column-12
+
+Markup:
+<style>
+.row{padding: .5em 0;}
+.col{background-color: #ddd; border: 1px solid #808080; padding: 0.5em;}
+</style>
+<div class="row">
+   <div class="col {$modifiers}">.col</div>
+</div>
+
+Styleguide 2.1.0
+*/
+.row {
+  @include clearfix;
+}
+.col {
+  position: relative;
+  display: block;
+  width: 100%;
+  float: left;
+  min-height: 1px;
+}
+@include grid;

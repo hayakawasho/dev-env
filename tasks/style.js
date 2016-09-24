@@ -8,7 +8,7 @@ var config = require('./config');
 var autoprefixer = require('autoprefixer');
 var browser = require("browser-sync");
 var cssMqpacker = require('css-mqpacker');
-var csso = require('gulp-csso');
+var cssnano = require('cssnano');
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
@@ -22,14 +22,14 @@ gulp.task('style', () => {
       .pipe(plumber({
          errorHandler: notify.onError('<%= error.message %>')
       }))
-      .pipe(gulpif(!config.IS_PRODUCTION, sourcemaps.init()))
+      .pipe(gulpif(process.env.NODE_ENV !== "production", sourcemaps.init()))
       .pipe(sass(config.style.sass))
-      .pipe(gulpif(!config.IS_PRODUCTION, csso()))
+      .pipe(gulpif(process.env.NODE_ENV === "production", postcss([cssnano()])))
       .pipe(postcss([
          autoprefixer(config.style.autoprefixer),
          cssMqpacker(config.style.mqpacker)
       ]))
-      .pipe(gulpif(!config.IS_PRODUCTION, sourcemaps.write('./maps')))
+      .pipe(gulpif(process.env.NODE_ENV !== "production", sourcemaps.write('./maps')))
       .pipe(gulp.dest(config.path.style.dest))
       .pipe(browser.stream({
          match: '**/*.css'

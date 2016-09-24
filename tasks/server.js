@@ -11,7 +11,7 @@ var browser = require('browser-sync');
 gulp.task('server', () => {
     let options = merge(config.server, {
         server: {
-            baseDir: config.dist,
+            baseDir: config.public,
             directory: false,
             middleware: [
                 rewrite([

@@ -1,16 +1,36 @@
 'use strict';
-/**
+/*
  * タスク設定ファイル
  */
-const DEV = 'app/dev',
-	PUBLIC = 'app/public',
+const DEV = 'src',
+	PUBLIC = 'public',
+	DIST = PUBLIC + '',
 	ASSETS = '/assets',
-	ROOT = '';
+	DIR = {
+		CSS: ASSETS + '/css',
+		JS: ASSETS + '/js',
+		IMG: ASSETS + '/img',
+		LIB: ASSETS + '/lib',
+		FONT: ASSETS + '/font',
+	};
 module.exports = {
+	// ドキュメントルート
+	public: PUBLIC + '/%type%',
 	// 出力先ディレクトリ
-	dist: PUBLIC + ROOT + '/%type%',
+	dist: DIST + '/%type%',
 	// gulpコマンドでデフォルトで監視するディレクトリ
 	defaultPath: 'pc',
+	// サーバー設定 BrowserSync(http://www.browsersync.io/docs/options/)
+	server: {
+		//proxy: "192.168.33.10", proxy: "10.0.23.16",
+		// サーバーの同期オプション
+		ghostMode: {
+			clicks: false,
+			location: false,
+			forms: false,
+			scroll: false
+		}
+	},
 	// htmlhintの設定
 	htmlhint: '.htmlhintrc',
 	// CSSの設定
@@ -21,104 +41,63 @@ module.exports = {
 		},
 		// autoPrefixer(https://github.com/postcss/autoprefixer#options)
 		autoprefixer: {
-			browsers: ['last 3 version', 'ie >= 9', 'Android 4.0'],
-			ignore: []
+			browsers: ["last 3 version", "iOS >= 8", "Android >= 4.0", "ie >= 9"]
 		},
 		// css-mqpacker(https://github.com/hail2u/node-css-mqpacker#options)
-		mqpacker: {}
+		mqpacker: {
+			sort: true
+		}
 	},
 	// スタイルガイドの設定 sc5-styleguide(https://github.com/SC5/sc5-styleguide)
 	styleguide: {
-		out: 'app/styleguide/%type%',
-		name: 'test',
+		out: 'styleguide/%type%',
+		title: 'styleguide',
 		server: true,
-		port: 5001,
-		//rootPath: '',
-		overviewPath: 'Overview.md', //Overviewファイルの場所を指定
-		errLogToConsole: true
-	},
-	// Sprite生成設定
-	sprite: {
-		// スプライトにする画像の拡張子
-		extension: '.png',
-		// 生成するスプライトの拡張子
-		imgExtension: '.png',
-		// 生成するcssファイルの拡張子
-		cssExtension: '.scss',
-		// 細かいオプション
-		options: {
-			// 生成するcssのテンプレート
-			cssTemplate: 'app/templates/sprite.ejs',
-			// スプライト配置アルゴリズム
-			algorithm: 'binary-tree',
-			// スプライト画像の間隔
-			padding: 6,
-			// 出力cssの詳細オプション
-			cssOpts: {
-				// スプライト生成用のmixinは書き出さない
-				functions: false
-			}
-		}
-	},
-	// サーバー設定 BrowserSync(http://www.browsersync.io/docs/options/)
-	server: {
-		// サーバーの同期オプション
-		ghostMode: {
-			clicks: false,
-			location: false,
-			forms: false,
-			scroll: false
-		}
+		port: 5000,
+		overviewPath: 'wiki/style.md',
+		sideNav: true,
+		disableEncapsulation: true,
+		extraHead: [],
 	},
 	// パス設定
 	path: {
 		html: {
-			src: PUBLIC + ROOT + '/%type%/**/*.html'
+			src: DEV + '/%type%/**/*.html',
+			//dest: DIST + '/%type%/**/*.html',
 		},
 		ejs: {
-			src: [DEV + ROOT + '/%type%/view/**/*.ejs', '!' + DEV + '/%type%/view/**/_*.ejs'],
-			watch: [DEV + ROOT + '/%type%/view/**/*.ejs'],
-			dest: PUBLIC + ROOT + '/%type%'
-		},
-		// json: jsonによるhtml生成
-		json: {
-			data: DEV + ROOT + '/%type%' + ASSETS + '/data/data.json', // 設定用JSONファイル
-			src: 'app/templates/json.ejs', // テンプレート用EJSファイル
-			dest: PUBLIC + ROOT + '/%type%'
+			src: [DEV + '/%type%/view/**/*.ejs', '!' + DEV + '/%type%/view/**/_*.ejs'],
+			watch: DEV + '/%type%/view/**/*.ejs',
+			dest: DIST + '/%type%'
 		},
 		// スタイル関連
 		style: {
-			src: [DEV + ROOT + '/%type%' + ASSETS + '/sass/**/*.scss', '!' + DEV + ROOT + '/%type%' + ASSETS + '/sass/**/_*.scss'],
-			watch: [DEV + ROOT + '/%type%' + ASSETS + '/sass/**/*.scss'],
-			dest: PUBLIC + ROOT + '/%type%' + ASSETS + '/css'
-		},
-		// スプライト: スプライト画像生成
-		sprite: {
-			src: DEV + ROOT + '/%type%' + ASSETS + '/sprites/*',
-			watch: DEV + ROOT + '/%type%' + ASSETS + '/sprites/**/*',
-			imagePath: '../../img',
-			imageDest: PUBLIC + ROOT + '/%type%' + ASSETS + '/img',
-			cssDest: DEV + ROOT + '/%type%' + ASSETS + '/sass/sprites'
+			src: [DEV + '/%type%' + DIR.CSS + '/**/*.scss', '!' + DEV + '/%type%' + DIR.CSS + '/**/_*.scss'],
+			watch: DEV + '/%type%' + DIR.CSS + '/**/*.scss',
+			dest: DIST + '/%type%' + DIR.CSS
 		},
 		images: {
-			src: [DEV + ROOT + '/%type%' + ASSETS + '/img/**/*.+(jpg|jpeg|png|gif|svg)'],
-			dest: PUBLIC + ROOT + '/%type%' + ASSETS + '/img'
+			src: DEV + '/%type%' + DIR.IMG + '/**/*.+(jpg|jpeg|png|gif|svg)',
+			dest: DIST + '/%type%' + DIR.IMG
 		},
 		// Javascript
 		js: {
-			src: [DEV + ROOT + '/%type%' + ASSETS + '/js/*.js', '!' + DEV + '/%type%' + ASSETS + '/js/_*.js'],
-			dest: PUBLIC + ROOT + '/%type%' + ASSETS + '/js'
+			src: [DEV + '/%type%' + DIR.JS + '/**/*.js', '!' + DEV + '/%type%' + DIR.JS + '/**/_*.js'],
+			dest: DIST + '/%type%' + DIR.JS
+		},
+		// json: jsonによるファイル生成
+		json: {
+			data: DEV + '/%type%' + ASSETS + '/data/data.json', // 設定用JSONファイル
+			src: 'src/templates/json.ejs', // テンプレート用EJSファイル
+			dest: DIST + '/%type%'
 		},
 		// 複製: copy
 		copy: [{
-			from: DEV + ROOT + '/%type%' + ASSETS + '/lib/**/*',
-			to: PUBLIC + ROOT + '/%type%' + ASSETS + '/lib'
+			from: DEV + '/%type%' + DIR.LIB + '/**/*',
+			to: DIST + '/%type%' + DIR.LIB
 		}, {
-			from: DEV + ROOT + '/%type%' + ASSETS + '/font/**/*',
-			to: PUBLIC + ROOT + '/%type%' + ASSETS + '/font'
-		}, {
-			from: DEV + ROOT + '/%type%' + ASSETS + '/video/**/*',
-			to: PUBLIC + ROOT + '/%type%' + ASSETS + '/video'
+			from: DEV + '/%type%' + DIR.FONT + '/**/*',
+			to: DIST + '/%type%' + DIR.FONT
 		}]
 	}
 };

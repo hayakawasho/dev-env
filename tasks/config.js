@@ -44,5 +44,4 @@ function buildPath(data) {
 }
 let conf = buildPath(config);
 conf.TYPE = getType(process.argv);
-conf.IS_PRODUCTION = false;
 module.exports = conf;

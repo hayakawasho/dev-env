@@ -1,0 +1,34 @@
+/**
+ * Option
+ */
+$enable-flex: false !default;
+/**
+ * Font family
+ */
+$font-ja: "游ゴシック体",Yu Gothic,YuGothic,"ヒラギノ角ゴ Pro",Hiragino Kaku Gothic Pro,"メイリオ",Meiryo,sans-serif;
+$font-en: Helvetica, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", sans-serif;
+/**
+ * Base
+ */
+$root-cursor: default !default;
+$root-box-sizing: border-box !default;
+$root-font-size: 62.5%; // cf) 62.5% → 1rem = 10px　/ 87.5% → 1rem = 14px
+$base-font-size: 1.4em;
+$base-font-color: #000;
+$base-link-color: #000;
+$base-link-text-decoration: none !default;
+$base-background-color: #fff;
+$base-line-height: 1;
+$base-list-style: none !default;
+$media-element-vertical-align: middle !default;
+/**
+ * Breakpoint
+ */
+/* small screen 480px以上 */
+$sm: 30em;
+/* medium screen 768px以上： 768px / 16px */
+$md: 48em;
+/* large screen 960px以上 */
+$lg: 60em;
+/* xlarge screen 1280px以上 */
+$xl: 80em;

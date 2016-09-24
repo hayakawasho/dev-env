@@ -11,11 +11,12 @@ let htmlhint = require('gulp-htmlhint');
 
 
 gulp.task('html', () => {
-   return gulp.src(config.path.html.src)
+   return gulp.src(config.path.html.dest)
       .pipe(plumber({
          errorHandler: notify.onError('<%= error.message %>')
       }))
       .pipe(htmlhint(config.htmlhint))
       .pipe(htmlhint.reporter())
       .pipe(htmlhint.failReporter());
+      //.pipe(gulp.dest(config.path.js.dest))
 });

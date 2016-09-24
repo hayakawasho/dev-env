@@ -1,0 +1,74 @@
+/*
+Base
+
+ベーススタイル
+
+Markup:
+<h1>見出し</h1>
+<h2>見出し</h2>
+<h3>見出し</h3>
+<h4>見出し</h4>
+<h5>見出し</h5>
+<h6>見出し</h6>
+
+Styleguide 1.0.0
+*/
+:root {
+  -ms-overflow-style: -ms-autohiding-scrollbar; // IE11+
+  overflow-y: scroll; // All browsers without overlaying scrollbars
+  cursor: $root-cursor;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: $root-box-sizing;
+}
+html {
+  font-size: $root-font-size;
+  width: 100%;
+  min-height: 100%;
+}
+body {
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: $base-font-size;
+  font-family: $font-ja;
+  color: $base-font-color;
+  background-color: $base-background-color;
+  line-height: $base-line-height;
+}
+// remove margin and padding of all elements
+* {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+}
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+// specify the list style of lists
+ol,
+ul {
+  list-style-type: $base-list-style;
+}
+// specify media element style
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: $media-element-vertical-align;
+}
+a {
+  color: inherit;
+  text-decoration: $base-link-text-decoration;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
