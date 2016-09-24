@@ -1,0 +1,17 @@
+//display:none
+@media (max-width: $sm ) {
+  .float-sm-left {
+    float: left !important;
+  }
+  .float-sm-right {
+    float: right !important;
+  }
+}
+@media (min-width: $sm ) {
+   .float-left {
+     float: left !important;
+   }
+   .float-right {
+     float: right !important;
+   }
+}

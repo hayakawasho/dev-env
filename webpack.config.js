@@ -1,32 +1,55 @@
-var webpack = require("webpack");
-
-var webpackConfig = {
-   devtool: "#source-map", // sourcemapの作成
-   output: {
-      filename: "[name].js",
-      sourceMapFilename: 'maps/[name].map',
-      //jsonpFunction: 'fr'
-   },
-   resolve: {
-      extensions: ['', '.js', '.coffee'], //拡張子を省略できる
-      modulesDirectories: [
-         //'bower_components',
-         'node_modules',
-      ],
-      alias: {}
-   },
-   module: {
-      loaders: [{
-         test: /\.(js)$/,
-         exclude: /node_modules/,
-         loader: 'babel?presets[]=es2015'
-      }]
-   },
-   plugins: [
-      //new webpack.optimize.UglifyJsPlugin({}),
-      new webpack.optimize.AggressiveMergingPlugin(), //ファイルを細かく分析し、まとめられるところはできるだけまとめてコードを圧縮する
-      new webpack.optimize.DedupePlugin(), // ライブラリ間で依存しているモジュールが重複している場合、二重に読み込まないようにする
-   ]
+'use strict';
+let webpack = require("webpack");
+let webpackConfig = {
+	output: {
+		filename: "[name].bundle.js",
+		sourceMapFilename: 'maps/[name].bundle.map',
+	},
+	devtool: '#source-map',
+	resolve: {
+		extensions: ['', '.js', '.jsx'],
+		modulesDirectories: ['node_modules', 'src']
+	},
+	module: {
+		preLoaders: [{
+			test: /\.js$/,
+			exclude: /Spec\.js$/i,
+			loaders: ['eslint']
+		}],
+		loaders: [{
+			test: /\.jsx?$/,
+			exclude: /node_modules/,
+			loaders: ['babel']
+		}, {
+			test: /\.css$/,
+			loader: "style!css"
+		}, {
+			test: /\.(jpg|png)$/,
+			loaders: ['url-loader']
+		}],
+	},
+	plugins: [
+		new webpack.optimize.AggressiveMergingPlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.DedupePlugin(),
+		new webpack.ProvidePlugin({
+			jQuery: "jquery",
+			$: "jquery",
+			jquery: "jquery"
+		})
+	],
+	eslint: {
+		configFile: '.eslintrc',
+		failOnError: true
+	}
 };
-
+if(process.env.NODE_ENV === "production") {
+	delete webpackConfig.devtool;
+	webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
+		exclude: /Spec\.js$/i,
+		compress: {
+			warnings: false
+		}
+	}));
+}
 module.exports = webpackConfig;

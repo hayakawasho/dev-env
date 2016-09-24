@@ -1,70 +1,67 @@
+'use strict';
 /**
  * スクリプトタスク
  * JSファイルをwebpackを使ってコンパイルして出力する
  */
-
-var path = require('path');
-var fs = require('fs');
-var gulp = require('gulp');
-var through = require('through2');
-var webpack = require('webpack');
-var config = require('./config');
-var browser = require("browser-sync");
-var conf;
-
+let browser = require("browser-sync");
+let path = require('path');
+let fs = require('fs');
+let gulp = require('gulp');
+let through = require('through2');
+let webpack = require('webpack');
+let config = require('./config');
+let conf;
+const FILE_EXT = /\.(ts|js)$/;
 /**
  * エントリーの登録
  */
-gulp.task('_setEntries', function() {
-   conf = require('../webpack.config.js');
-   return gulp.src(config.path.js.src)
-      .pipe(through.obj(function(file, charset, callback) {
-         conf.entry = conf.entry || {};
-         var fileName = path.basename(file.path).replace(/\.(ts|js)$/, '');
-         conf.entry[fileName] = file.path;
-         this.push(file);
-         callback();
-      }));
+gulp.task('_setEntries', () => {
+	conf = require('../webpack.config.js');	
+	return gulp.src(config.path.js.src)
+   .pipe(through.obj(function(file, charset, callback) {
+		conf.entry = conf.entry || {};
+		let fileName = path.basename(file.path).replace(FILE_EXT, '');
+		conf.entry[fileName] = file.path;
+		this.push(file);
+		callback();
+	}));
 });
-
 /**
  * webpackコンパイル開始
  * @param watch
  * @returns {*}
  */
 function exeWebPack(watch, callback) {
-   conf.watch = watch;
-   conf.output.path = config.path.js.dest;
-   webpack(conf, function(err, stats) {
-      if (err) return console.error(err);
-      var jsonStats = stats.toJson();
-      if (jsonStats.errors.length > 0) {
-         jsonStats.errors.forEach(function(value) {
-            console.error(value);
-         });
-         return;
-      }
-      if (jsonStats.warnings.length > 0) {
-         jsonStats.warnings.forEach(function(value) {
-            console.log(value);
-         });
-      }
-      browser.reload();
-      if (callback) callback();
-      callback = null;
-   });
+	conf.watch = watch;
+	conf.output.path = config.path.js.dest;
+	webpack(conf, (err, stats) => {
+		if(err) return console.error(err);
+		let jsonStats = stats.toJson();
+		if(jsonStats.errors.length > 0) {
+			jsonStats.errors.forEach((value) => {
+				console.error(value);
+			});
+			return;
+		}
+		if(jsonStats.warnings.length > 0) {
+			jsonStats.warnings.forEach((value) => {
+				console.log(value);
+			});
+		}
+		browser.reload();
+		if(callback) callback();
+		callback = null;
+	});
 }
-
 /**
  * スクリプトコンパイルタスク
  */
-gulp.task('script', ['_setEntries'], function(callback) {
-   return exeWebPack(false, callback);
+gulp.task('script', ['_setEntries'], (callback) => {
+	return exeWebPack(false, callback);
 });
-
 /**
  * スクリプト監視タスク
  */
-gulp.task('watchScript', ['_setEntries'], function(callback) {
-   return exeWebPack(true, callback);
+gulp.task('watchScript', ['_setEntries'], (callback) => {
+	return exeWebPack(true, callback);
 });

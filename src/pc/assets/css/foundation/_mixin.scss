@@ -1,0 +1,121 @@
+@mixin mq-screen-max($max-width) {
+   @media (max-width: $max-width - 1 ){
+    @content;
+  }
+}
+@mixin mq-screen-min($min-width) {
+   @media (min-width: $min-width){
+    @content;
+  }
+}
+@mixin mq-screen($min-width, $max-width) {
+   @media (min-width: $min-width) and (max-width: $max-width - 1){
+    @content;
+  }
+}
+// clearfix
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+// テキストぶっ飛ばし
+@mixin text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: none;
+}
+// rem
+@mixin rem($size, $base:10) {
+  font-size: $size + px;
+  font-size: ($size / $base) + rem;
+}
+// Center Elements Horizontally and Vertically
+@mixin table-middle($width, $height) {
+  width: $width;
+  height: $height;
+  display: table;
+  text-align: center;
+  > * {
+    vertical-align: middle;
+    display: inline-block;
+  }
+}
+@mixin inline-block-middle($width, $height) {
+  width: $width;
+  height: $height;
+  display: block;
+  text-align: center;
+  > * {
+    vertical-align: middle;
+    display: inline-block;
+  }
+  &:before {
+    content: "";
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
+    display: inline-block;
+  }
+}
+// placeholder
+@mixin placeholder($color, $size) {
+  &::placeholder {
+    @include rem($size);
+    font-family: $base-font-family;
+    color: $color;
+  }
+}
+@mixin retina {
+   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx){
+    @content;
+  }
+}
+//矢印の上下中央指定
+@mixin middle-arrow($direction, $length) {
+  position: absolute;
+  top: 50%;
+  width: $length;
+  height: $length;
+  @if $direction == top {
+    margin-top: -($length/2)-($length/4);
+    transform: rotate(135deg);
+  }
+  @else if $direction == bottom {
+    margin-top: -($length/2)+($length/4);
+    transform: rotate(-45deg);
+  }
+  @else if $direction == left {
+    margin-top: -$length/2;
+    transform: rotate(45deg);
+  }
+  @else if $direction == right {
+    margin-top: -$length/2;
+    transform: rotate(-135deg);
+  }
+}
+//リンクカラーの一括設定
+@mixin linkColor($color:#0033cc) {
+  color: $color;
+  &:active,
+  &:focus,
+  &:hover {
+    color: lighten($color, 20%);
+  }
+}
+
+//リンクカラーの一括設定
+@mixin touch() {
+   /* テキスト選択させない */
+   	-webkit-user-select:none;
+   	-moz-user-select:none;
+   	-ms-user-select:none;
+   	user-select:none;
+   	/* windows8のスワイプ動作を禁止 */
+   	-ms-touch-action:none;
+   	touch-action:none;
+}

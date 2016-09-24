@@ -1,0 +1,10 @@
+@include mq-screen-max($md) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+@include mq-screen-min($md) {
+   .hidden-md {
+     display: none !important;
+   }
+}
