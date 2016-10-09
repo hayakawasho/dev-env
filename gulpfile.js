@@ -8,10 +8,9 @@ let config = require('./tasks/config');
  * 監視タスク
  */
 gulp.task('watch', () => {
-	gulp.watch(config.path.ejs.watch, ['ejs']);
-	gulp.watch(config.path.html.src, ['html']);
+	gulp.watch(config.path.view.watch, ['ejs']);
 	gulp.watch(config.path.style.watch, ['style']);
-	gulp.watch(config.path.images.src, ['images']);
+	gulp.watch(config.path.image.src, ['image']);
 	var copyWatches = [];
 	// 複製タスクはループで回して監視対象とする
 	if(config.path.copy) {
@@ -25,7 +24,7 @@ gulp.task('watch', () => {
  * ビルドタスク
  */
 gulp.task('build', ['clean'], (callback) => {
-	runSequence(['ejs', 'style', 'script', 'images', 'copy'], callback);
+	runSequence(['ejs', 'style', 'script', 'image', 'copy'], callback);
 });
 /**
  * デフォルトタスク

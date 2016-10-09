@@ -6,8 +6,8 @@
 let gulp = require('gulp');
 let config = require('./config');
 let imagemin = require('gulp-imagemin');
-gulp.task('images', () => {
-	return gulp.src(config.path.images.src).pipe(imagemin({
+gulp.task('image', () => {
+	return gulp.src(config.path.image.src).pipe(imagemin({
 		optimizationLevel: 7,
 		progressive: true,
 		interlaced: true,
@@ -17,5 +17,5 @@ gulp.task('images', () => {
          removeViewBox: false
 		}]
 	}))
-   .pipe(gulp.dest(config.path.images.dest));
+   .pipe(gulp.dest(config.path.image.dest));
 });

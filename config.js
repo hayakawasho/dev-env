@@ -7,11 +7,13 @@ const DEV = 'src',
 	DIST = PUBLIC + '',
 	ASSETS = '/assets',
 	DIR = {
+		VIEW: '/view',
 		CSS: ASSETS + '/css',
 		JS: ASSETS + '/js',
 		IMG: ASSETS + '/img',
 		LIB: ASSETS + '/lib',
 		FONT: ASSETS + '/font',
+		STATIC: '/static',
 	};
 module.exports = {
 	// ドキュメントルート
@@ -23,7 +25,6 @@ module.exports = {
 	// サーバー設定 BrowserSync(http://www.browsersync.io/docs/options/)
 	server: {
 		//proxy: "192.168.33.10", proxy: "10.0.23.16",
-		// サーバーの同期オプション
 		ghostMode: {
 			clicks: false,
 			location: false,
@@ -35,15 +36,12 @@ module.exports = {
 	htmlhint: '.htmlhintrc',
 	// CSSの設定
 	style: {
-		// node-sass(https://github.com/sass/node-sass#options)
 		sass: {
 			outputStyle: 'expanded'
 		},
-		// autoPrefixer(https://github.com/postcss/autoprefixer#options)
 		autoprefixer: {
 			browsers: ["last 3 version", "iOS >= 8", "Android >= 4.0", "ie >= 9"]
 		},
-		// css-mqpacker(https://github.com/hail2u/node-css-mqpacker#options)
 		mqpacker: {
 			sort: true
 		}
@@ -62,12 +60,12 @@ module.exports = {
 	// パス設定
 	path: {
 		html: {
-			src: DEV + '/%type%/**/*.html',
-			//dest: DIST + '/%type%/**/*.html',
+			dest: DIST + '/%type%/**/*.html',
 		},
-		ejs: {
-			src: [DEV + '/%type%/view/**/*.ejs', '!' + DEV + '/%type%/view/**/_*.ejs'],
-			watch: DEV + '/%type%/view/**/*.ejs',
+		// HTML関連
+		view: {
+			src: [DEV + '/%type%/' + DIR.VIEW + '/**/*.ejs', '!' + DEV + '/%type%/' + DIR.VIEW + '/**/_*.ejs'],
+			watch: DEV + '/%type%/' + DIR.VIEW + '/**/*.ejs',
 			dest: DIST + '/%type%'
 		},
 		// スタイル関連
@@ -76,8 +74,8 @@ module.exports = {
 			watch: DEV + '/%type%' + DIR.CSS + '/**/*.scss',
 			dest: DIST + '/%type%' + DIR.CSS
 		},
-		images: {
-			src: DEV + '/%type%' + DIR.IMG + '/**/*.+(jpg|jpeg|png|gif|svg)',
+		image: {
+			src: DEV + '/%type%' + DIR.IMG + '/**/*.+(jpg|png|gif|svg)',
 			dest: DIST + '/%type%' + DIR.IMG
 		},
 		// Javascript
@@ -85,19 +83,16 @@ module.exports = {
 			src: [DEV + '/%type%' + DIR.JS + '/**/*.js', '!' + DEV + '/%type%' + DIR.JS + '/**/_*.js'],
 			dest: DIST + '/%type%' + DIR.JS
 		},
-		// json: jsonによるファイル生成
-		json: {
-			data: DEV + '/%type%' + ASSETS + '/data/data.json', // 設定用JSONファイル
-			src: 'src/templates/json.ejs', // テンプレート用EJSファイル
-			dest: DIST + '/%type%'
-		},
-		// 複製: copy
+		// 複製
 		copy: [{
 			from: DEV + '/%type%' + DIR.LIB + '/**/*',
 			to: DIST + '/%type%' + DIR.LIB
 		}, {
 			from: DEV + '/%type%' + DIR.FONT + '/**/*',
 			to: DIST + '/%type%' + DIR.FONT
+		}, {
+			from: DEV + '/%type%' + DIR.STATIC + '/**/*',
+			to: DIST + '/%type%'
 		}]
 	}
 };

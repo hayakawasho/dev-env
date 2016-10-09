@@ -18,5 +18,4 @@ gulp.task('html', () => {
       .pipe(htmlhint(config.htmlhint))
       .pipe(htmlhint.reporter())
       .pipe(htmlhint.failReporter());
-      //.pipe(gulp.dest(config.path.js.dest))
 });

@@ -7,35 +7,44 @@ let webpackConfig = {
 	},
 	devtool: '#source-map',
 	resolve: {
-		extensions: ['', '.js', '.jsx'],
-		modulesDirectories: ['node_modules', 'src']
+		extensions: ['', '.js', '.jsx', '.coffee', '.ts'],
+		// 探索するモジュール用ディレクトリを指定
+		modulesDirectories: ['node_modules']
 	},
 	module: {
 		preLoaders: [{
 			test: /\.js$/,
-			exclude: /Spec\.js$/i,
+			exclude: /node_modules/,
 			loaders: ['eslint']
 		}],
 		loaders: [{
-			test: /\.jsx?$/,
+			test: /\.js[x]?$/,
 			exclude: /node_modules/,
 			loaders: ['babel']
 		}, {
-			test: /\.css$/,
-			loader: "style!css"
+			test: /\.coffee$/,
+			loader: 'coffee-loader'
 		}, {
-			test: /\.(jpg|png)$/,
-			loaders: ['url-loader']
+			test: /\.ts(x?)$/,
+			loader: 'ts-loader'
+		}, {
+			test: /\.(png|jpg)$/,
+			loader: 'url-loader?limit=8192'
+		}, {
+			test: /\.css$/,
+			loaders: ["style-loader", "css-loader"]
 		}],
 	},
 	plugins: [
+		// new webpack.optimize.CommonsChunkPlugin('common.bundle.js'),
 		new webpack.optimize.AggressiveMergingPlugin(),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.optimize.DedupePlugin(),
+		// 指定のモジュールを予めグローバル変数としておく
 		new webpack.ProvidePlugin({
-			jQuery: "jquery",
 			$: "jquery",
-			jquery: "jquery"
+			jQuery: "jquery",
+			"window.jQuery": "jquery"
 		})
 	],
 	eslint: {
@@ -46,7 +55,6 @@ let webpackConfig = {
 if(process.env.NODE_ENV === "production") {
 	delete webpackConfig.devtool;
 	webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
-		exclude: /Spec\.js$/i,
 		compress: {
 			warnings: false
 		}

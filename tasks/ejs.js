@@ -11,11 +11,11 @@ var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
 
 gulp.task('ejs', () => {
-   return gulp.src(config.path.ejs.src)
+   return gulp.src(config.path.view.src)
       .pipe(plumber({
          errorHandler: notify.onError('<%= error.message %>')
       }))
-      .pipe(ejs(config.ejs, {ext: '.html'}))
-      .pipe(gulp.dest(config.path.ejs.dest))
+      .pipe(ejs(config.view, {ext: '.html'}))
+      .pipe(gulp.dest(config.path.view.dest))
       .pipe(browser.stream());
 });

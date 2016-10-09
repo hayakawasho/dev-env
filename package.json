@@ -1,8 +1,7 @@
 {
-  "name": "template",
+  "name": "dev-template",
   "version": "2.0.0",
   "description": "",
-  "main": "gulpfile.js",
   "scripts": {
     "start": "npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,11 +11,18 @@
   },
   "author": "hayakawasho",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hayakawasho/dev-template.git"
+  },
   "dependencies": {
-    "jquery": "^3.1.0",
+    "jquery": "^2.2.3",
+    "normalize.css": "^4.1.1",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
-    "vue": "^1.0.26"
+    "velocity-animate": "^1.2.3",
+    "vue": "^1.0.26",
+    "vue-router": "^0.7.13"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
@@ -26,6 +32,8 @@
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "browser-sync": "^2.16.0",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.11.1",
     "connect-modrewrite": "^0.8.5",
     "css-loader": "^0.25.0",
     "css-mqpacker": "^4.0.1",
@@ -50,6 +58,7 @@
     "sc5-styleguide": "^0.3.43",
     "style-loader": "^0.13.1",
     "through2": "^2.0.1",
+    "ts-loader": "^0.9.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2"
   }
